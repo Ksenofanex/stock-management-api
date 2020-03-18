@@ -1,0 +1,1 @@
+web: gunicorn stockmanagement_project.wsgi --log-file -

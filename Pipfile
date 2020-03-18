@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "==2.2.6"
+djangorestframework = "==3.10.3"
+django-rest-auth = "==0.9.5"
+django-allauth = "==0.40.0"
+coreapi = "==2.3.3"
+pyyaml = "==5.1.2"
+django-rest-swagger = "==2.2.0"
+gunicorn = "*"
+django-heroku = "*"
+psycopg2 = "==2.8.4"
+
+[requires]
+python_version = "3.8"
