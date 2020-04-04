@@ -1,7 +1,9 @@
 # stock-management-api
 A simple Stock Management API that was built with DRF. It has schema, documents, API authentication and authorization features.
 
+***
 Pages:
+***
 
 - Main Page: https://stockmanagementksenofanex.herokuapp.com/api/v1/
 
