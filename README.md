@@ -5,22 +5,22 @@ A simple Stock Management API that was built with DRF. It has schema, documents,
 Pages
 ***
 
-- Main Page: https://stockmanagementksenofanex.herokuapp.com/api/v1/
+- [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/)
 
-- API Detail Page: https://stockmanagementksenofanex.herokuapp.com/api/v1/1/
+- [API Detail Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/1/) 
 
 ***
 Authentication
 ***
 
-- API Registration Page: https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/
+- [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
 
-- API Login Page: https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/
+- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/) 
 
 ***
 Docs
 ***
 
-- Swagger-Documents Page: https://stockmanagementksenofanex.herokuapp.com/swagger-docs/
+- [Swagger-Documents Page](https://stockmanagementksenofanex.herokuapp.com/swagger-docs/)
 
-- Documents Page: https://stockmanagementksenofanex.herokuapp.com/docs/
+- [Documents Page](https://stockmanagementksenofanex.herokuapp.com/docs/)
