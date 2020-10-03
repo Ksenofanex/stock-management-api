@@ -5,7 +5,13 @@ A simple Stock Management API that was built with DRF. It has schema, documents,
 ### Pages
 ***
 
-- [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/)
+- [Suppliers Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/suppliers/)
+
+- [Currencies Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/currencies/)
+
+- [Measurements Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/measurements/) 
+
+- [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/materials/)
 
 - [API Detail Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/1/) 
 
