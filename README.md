@@ -13,7 +13,7 @@ A simple Stock Management API that was built with DRF. It has schema, documents,
 
 - [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/materials/)
 
-- [API Detail Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/1/) 
+- [Material Detail Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/materials/1/) 
 
 ***
 ### Authentication
