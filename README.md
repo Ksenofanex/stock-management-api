@@ -1,5 +1,5 @@
 # stock-management-api
-A simple Stock Management API that was built with DRF. It has schema, documents, API authentication and authorization features.
+A simple Stock Management API that was built with DRF. It has CRUD, schema, documents, API authentication and authorization features.
 
 ***
 ### Pages
