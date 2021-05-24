@@ -38,6 +38,7 @@ class MaterialTests(TestCase):
         price = f"{material.price}"
         currency = f"{material.currency}"
         supplier = f"{material.supplier}"
+        
         self.assertEqual(accountant, 'testuser1')
         self.assertEqual(name, 'tesla model 3')
         self.assertEqual(measurement_type, 'KG')
