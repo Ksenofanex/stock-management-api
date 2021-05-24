@@ -18,11 +18,11 @@ class RawMaterial(models.Model):
 
 
 class Currency(models.Model):
-    currency_code = models.CharField(max_length=3) # TRY, USD, EUR etc.
-    currency_name = models.CharField(max_length=25) # Turkish Lira, U.S. Dollar etc.
+    code = models.CharField(max_length=3) # TRY, USD, EUR etc.
+    name = models.CharField(max_length=25) # Turkish Lira, U.S. Dollar etc.
 
     def __str__(self):
-        return self.currency_code
+        return self.code
 
 
 class MeasurementType(models.Model):
