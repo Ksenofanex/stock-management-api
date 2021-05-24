@@ -12,7 +12,7 @@ urlpatterns = [
     # Built-in Django urls
     path('admin/', admin.site.urls),
 
-    # Local app url
+    # API
     path('api/v1/', include('api.urls')),
 
     # Built-in Django Rest url
