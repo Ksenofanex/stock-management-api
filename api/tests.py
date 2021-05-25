@@ -9,25 +9,20 @@ class MaterialTests(TestCase):
         testuser1 = User.objects.create_user(
             username='testuser1', password='deneme123'
         )
-        testuser1.save()
 
         measurement_type = MeasurementType.objects.create(code='KG', name='Kilogram')
-        measurement_type.save()
 
         supplier = Supplier.objects.create(
             name='Tesla', phone=123, email='tesla@tesla.com',
             address='San Francisco-California-USA'
         )
-        supplier.save()
 
         currency = Currency.objects.create(currency_code='USD', currency_name='United States Dollar')
-        currency.save()
 
         test_material = RawMaterial.objects.create(
             accountant=testuser1, material_name='tesla model 3', measurement_type=measurement_type,
             total_amount=1, price=50.00, currency=currency, supplier=supplier
         )
-        test_material.save()
 
     def test_material(self):
         material = RawMaterial.objects.get(id=1)
