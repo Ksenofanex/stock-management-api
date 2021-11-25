@@ -1,9 +1,8 @@
+# PyCharm
 .idea/
 
-# dotenv
-.env
-
 # virtualenv
+.env
 .venv
 venv/
 ENV/
