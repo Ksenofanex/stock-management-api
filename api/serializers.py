@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import RawMaterial, Supplier, MeasurementType, Currency
+from api.models import RawMaterial, Supplier, MeasurementType, Currency
 
 
 class MeasurementSerializer(serializers.ModelSerializer):
