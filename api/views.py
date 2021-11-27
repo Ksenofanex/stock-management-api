@@ -1,8 +1,8 @@
 from rest_framework import generics
 
-from .permissions import IsAuthorOrReadOnly
-from .models import RawMaterial, Supplier, Currency, MeasurementType
-from .serializers import MaterialSerializer, SupplierSerializer, CurrencySerializer, MeasurementSerializer
+from api.permissions import IsAuthorOrReadOnly
+from api.models import RawMaterial, Supplier, Currency, MeasurementType
+from api.serializers import MaterialSerializer, SupplierSerializer, CurrencySerializer, MeasurementSerializer
 
 
 class MaterialList(generics.ListCreateAPIView):
