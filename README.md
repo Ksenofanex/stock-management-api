@@ -2,6 +2,14 @@
 A simple Stock Management API that was built with Django Rest Framework. It has CRUD, schema, documents, API authentication and authorization features.
 
 ***
+### Authentication
+***
+
+- [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
+
+- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/materials) 
+
+***
 ### Pages
 ***
 
@@ -14,14 +22,6 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 - [Currencies Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/currencies/)
 
 - [Measurements Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/measurements/) 
-
-***
-### Authentication
-***
-
-- [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
-
-- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/) 
 
 ***
 ### Docs
