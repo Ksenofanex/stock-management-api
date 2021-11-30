@@ -26,8 +26,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",  # Added it after django-allauth.
     # Django Rest Framework
     "rest_framework",
-    "rest_framework.authtoken",  # Built-in token auth. You must add it after a
-    # dding TokenAuthentication to the bottom.
+    "rest_framework.authtoken",  # Built-in token auth. You must add it after
+    # adding TokenAuthentication to the bottom.
     "rest_framework_swagger",  # For schema documentation.
     # Allauth for registration
     "allauth",  # For API user registration.
