@@ -1,7 +1,12 @@
 from rest_framework import viewsets
 
 from api.permissions import IsAuthorOrReadOnly
-from api.models import RawMaterial, Supplier, Currency, MeasurementType
+from api.models import (
+    RawMaterial,
+    Supplier,
+    Currency,
+    MeasurementType,
+)
 from api.serializers import (
     MaterialSerializer,
     SupplierSerializer,

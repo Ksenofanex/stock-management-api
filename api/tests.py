@@ -1,7 +1,12 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-from api.models import RawMaterial, MeasurementType, Supplier, Currency
+from api.models import (
+    RawMaterial,
+    MeasurementType,
+    Supplier,
+    Currency,
+)
 
 
 class MaterialTests(TestCase):
