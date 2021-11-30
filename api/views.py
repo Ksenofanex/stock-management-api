@@ -10,7 +10,7 @@ from api.serializers import (
 )
 
 
-class MaterialList(viewsets.ModelViewSet):
+class MaterialListViewSet(viewsets.ModelViewSet):
     queryset = RawMaterial.objects.all()
     permission_classes = (IsAuthorOrReadOnly,)
     serializer_class = MaterialSerializer
@@ -21,16 +21,16 @@ class MaterialList(viewsets.ModelViewSet):
         return super().perform_create(serializer)
 
 
-class SupplierList(viewsets.ModelViewSet):
+class SupplierListViewSet(viewsets.ModelViewSet):
     queryset = Supplier.objects.all()
     serializer_class = SupplierSerializer
 
 
-class CurrencyList(viewsets.ModelViewSet):
+class CurrencyListViewSet(viewsets.ModelViewSet):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
 
 
-class MeasurementList(viewsets.ModelViewSet):
+class MeasurementListViewSet(viewsets.ModelViewSet):
     queryset = MeasurementType.objects.all()
     serializer_class = MeasurementSerializer

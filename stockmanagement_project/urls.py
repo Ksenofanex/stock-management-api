@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+
 from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
@@ -20,8 +21,8 @@ urlpatterns = [
     # Django-rest-auth app url
     path(
         "api/v1/rest-auth/", include("rest_auth.urls")
-    ),  # Django-rest-auth. Log in & out, pass reset. Install via pipenv. /login/ page.
-    # Also /password/reset/ and /password/reset/confirm/ page.
+    ),  # Django-rest-auth. Log in & out, pass reset. Install via pipenv.
+    # /login/ page. Also /password/reset/ and /password/reset/confirm/ page.
     path(
         "api/v1/rest-auth/registration/",
         include("rest_auth.registration.urls"),
