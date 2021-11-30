@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import viewsets
 
 from api.permissions import IsAuthorOrReadOnly
 from api.models import RawMaterial, Supplier, Currency, MeasurementType
@@ -10,47 +10,27 @@ from api.serializers import (
 )
 
 
-class MaterialList(generics.ListCreateAPIView):
+class MaterialList(viewsets.ModelViewSet):
     queryset = RawMaterial.objects.all()
+    permission_classes = (IsAuthorOrReadOnly,)
     serializer_class = MaterialSerializer
 
     def perform_create(self, serializer):  # For setting the author field
         # currently logged-in user.
         serializer.validated_data["accountant"] = self.request.user
-        return super(MaterialList, self).perform_create(serializer)
+        return super().perform_create(serializer)
 
 
-class MaterialDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthorOrReadOnly,)
-    queryset = RawMaterial.objects.all()
-    serializer_class = MaterialSerializer
-
-
-class SupplierList(generics.ListCreateAPIView):
+class SupplierList(viewsets.ModelViewSet):
     queryset = Supplier.objects.all()
     serializer_class = SupplierSerializer
 
 
-class SupplierDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Supplier.objects.all()
-    serializer_class = SupplierSerializer
-
-
-class CurrencyList(generics.ListCreateAPIView):
+class CurrencyList(viewsets.ModelViewSet):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
 
 
-class CurrencyDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Currency.objects.all()
-    serializer_class = CurrencySerializer
-
-
-class MeasurementList(generics.ListCreateAPIView):
-    queryset = MeasurementType.objects.all()
-    serializer_class = MeasurementSerializer
-
-
-class MeasurementDetail(generics.RetrieveUpdateDestroyAPIView):
+class MeasurementList(viewsets.ModelViewSet):
     queryset = MeasurementType.objects.all()
     serializer_class = MeasurementSerializer
