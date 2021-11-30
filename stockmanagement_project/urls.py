@@ -12,8 +12,10 @@ schema_view = get_swagger_view(title=API_TITLE)
 urlpatterns = [
     # Built-in Django urls
     path("admin/", admin.site.urls),
+
     # API
     path("api/v1/", include("api.urls")),
+
     # Built-in Django Rest url
     path(
         "api-auth/", include("rest_framework.urls")
@@ -27,6 +29,7 @@ urlpatterns = [
         "api/v1/rest-auth/registration/",
         include("rest_auth.registration.urls"),
     ),  # For user registration in API.
+
     # Schema & Documentation
     path("swagger-docs/", schema_view),
     path(
