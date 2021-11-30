@@ -11,6 +11,3 @@ db.sqlite3
 
 # Pycaches
 __pycache__/
-
-# Migrations
-migrations/

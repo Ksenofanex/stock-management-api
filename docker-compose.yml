@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: back-end
+    build: .
+    command: >
+      sh -c "python /code/manage.py makemigrations &&
+             python /code/manage.py migrate &&
+             python /code/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"

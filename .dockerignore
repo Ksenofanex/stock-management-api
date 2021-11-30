@@ -1,0 +1,14 @@
+# PyCharm related files
+.idea
+
+# Virtual environment
+venv/
+
+# Git files
+.git
+
+# VsCode related files
+.vscode
+
+# Local db.
+db.sqlite3
