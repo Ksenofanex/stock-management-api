@@ -1,17 +1,20 @@
-# PyCharm
+# PyCharm.
 .idea/
 
-# virtualenv
+# virtualenv.
 .env
 .venv
 venv/
 ENV/
 
-# DB
+# DB.
 db.sqlite3
 
-# Pycaches
+# Pycaches.
 __pycache__/
 
-# Migrations
+# Migrations.
 migrations/
+
+# Ignore local .env file.
+stockmanagement_project/.env
