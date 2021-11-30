@@ -15,6 +15,3 @@ __pycache__/
 
 # Migrations.
 migrations/
-
-# Ignore local .env file.
-stockmanagement_project/.env
