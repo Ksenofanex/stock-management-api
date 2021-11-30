@@ -2,6 +2,7 @@
 .idea/
 
 # virtualenv
+.env
 .venv
 venv/
 ENV/
@@ -11,3 +12,6 @@ db.sqlite3
 
 # Pycaches
 __pycache__/
+
+# Migrations
+migrations/
