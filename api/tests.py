@@ -8,17 +8,28 @@ class MaterialTests(TestCase):
     @classmethod
     def setUpTestData(cls):
         testuser1 = User.objects.create_user(
-            username='testuser1', password='deneme123'
+            username="testuser1", password="deneme123"
         )
-        measurement_type = MeasurementType.objects.create(code='KG', name='Kilogram')
+        measurement_type = MeasurementType.objects.create(
+            code="KG", name="Kilogram"
+        )
         supplier = Supplier.objects.create(
-            name='Tesla', phone=123, email='tesla@tesla.com',
-            address='San Francisco-California-USA'
+            name="Tesla",
+            phone=123,
+            email="tesla@tesla.com",
+            address="San Francisco-California-USA",
         )
-        currency = Currency.objects.create(code='USD', name='United States Dollar')
+        currency = Currency.objects.create(
+            code="USD", name="United States Dollar"
+        )
         test_material = RawMaterial.objects.create(
-            accountant=testuser1, material_name='tesla model 3', measurement_type=measurement_type,
-            total_amount=1, price=50.00, currency=currency, supplier=supplier
+            accountant=testuser1,
+            material_name="tesla model 3",
+            measurement_type=measurement_type,
+            total_amount=1,
+            price=50.00,
+            currency=currency,
+            supplier=supplier,
         )
 
     def test_material(self):
@@ -30,11 +41,11 @@ class MaterialTests(TestCase):
         price = f"{material.price}"
         currency = f"{material.currency}"
         supplier = f"{material.supplier}"
-        
-        self.assertEqual(accountant, 'testuser1')
-        self.assertEqual(name, 'tesla model 3')
-        self.assertEqual(measurement_type, 'KG')
-        self.assertEqual(total_amount, '1.00')
-        self.assertEqual(price, '50.00')
-        self.assertEqual(currency, 'USD')
-        self.assertEqual(supplier, 'Tesla')
+
+        self.assertEqual(accountant, "testuser1")
+        self.assertEqual(name, "tesla model 3")
+        self.assertEqual(measurement_type, "KG")
+        self.assertEqual(total_amount, "1.00")
+        self.assertEqual(price, "50.00")
+        self.assertEqual(currency, "USD")
+        self.assertEqual(supplier, "Tesla")
