@@ -1,13 +1,13 @@
-# PyCharm related files
+# PyCharm related files.
 .idea
 
-# Virtual environment
+# Virtual environment.
 venv/
 
-# Git files
+# Git files.
 .git
 
-# VsCode related files
+# VsCode related files.
 .vscode
 
 # Local db.
