@@ -117,6 +117,9 @@ pip install -r requirements.txt
 For Linux:
 
 ```bash
+pwd
+/stock-management-api
+
 python3 -m venv env
 
 source env/bin/activate
