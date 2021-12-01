@@ -57,7 +57,7 @@ pwd
 **Environment Variables**
 
 * Before installing the project, you first need to configure environment variables in the [.env](stockmanagement_project/.env) file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
-* You can generate the SECRET_KEY via sites like [this](https://djecrety.ir/) and add it to the [.env](stockmanagement_project/.env) file.
+* You can generate the SECRET_KEY via sites like [this](https://djecrety.ir/) and add it to the [.env](https://github.com/Ksenofanex/stock-management-api/blob/35955cdabcb12e3cdb0d9bcff4efa23bee921682/stockmanagement_project/.env#L2) file.
 
 * The layout of the [.env](stockmanagement_project/.env) file:
 
@@ -92,7 +92,7 @@ docker-compose up
 
 With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
 
-![Docker successfuly initalized project output](https://i.imgur.com/PiTp1cL.png)
+![Docker successfully initialized project output](https://i.imgur.com/PiTp1cL.png)
 
 Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
@@ -111,6 +111,8 @@ pwd
 virtualenv env
 
 .\env\Scripts\activate
+
+pip install -r requirements.txt
 ```
 
 For Linux:
@@ -126,8 +128,6 @@ pip3 install requirements.txt
 After activating the env, run the following commands:
 
 ```
-pip install -r requirements.txt
-
 python manage.py makemigrations
 
 python manage.py migrate
@@ -135,7 +135,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-![Docker successfuly initalized project output](https://i.imgur.com/k3zGPJ3.png)
+![Venv success output](https://i.imgur.com/k3zGPJ3.png)
 
 Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
