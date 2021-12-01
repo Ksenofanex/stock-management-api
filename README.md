@@ -36,24 +36,24 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 # Installation
 
-**Clone the project**
+### Clone the project
 
 Depending on the choice of yours, you can clone the project in various ways. Either via IDE, Git Desktop or Git commands.
 
 Whatever the case, make sure Git is installed and after cloning the project, you are at the same working directory with the project.
 
-Look below for cloning the project via Git:
+Look below for cloning the project via bash:
 
 ```bash
-~$ git clone https://github.com/Ksenofanex/stock-management-api.git
+$ git clone https://github.com/Ksenofanex/stock-management-api.git
 
-~$ cd stock-management-api
+$ cd stock-management-api
 
-~$ pwd
+$ pwd
 /stock-management-api
 ```
 
-**Environment Variables**
+### Environment Variables
 
 * Before installing the project, you first need to configure environment variables in the [.env](stockmanagement_project/.env) file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
 * You can generate the `SECRET_KEY` via sites like [this](https://djecrety.ir/) and add it to the [.env](https://github.com/Ksenofanex/stock-management-api/blob/35955cdabcb12e3cdb0d9bcff4efa23bee921682/stockmanagement_project/.env#L2) file.
@@ -67,12 +67,12 @@ SECRET_KEY=
 
 * An example configuration for the [.env](stockmanagement_project/.env) file:
 
-> Set DEBUG to True while developing and testing in local/testing environments. Otherwise, set DEBUG to False.
-
 ```
 DEBUG=True
 SECRET_KEY=itdb4-_wc!=*hgl3)h@v$#jy7bxingn(n+qklsdso%9yq&c5)!
 ```
+
+> Set DEBUG to True while developing and testing in local/testing environments. Otherwise, set DEBUG to False.
 
 * After properly configuring the environment variables, you can proceed to the [Docker](https://github.com/Ksenofanex/stock-management-api#docker) or [Venv](https://github.com/Ksenofanex/stock-management-api#venv) section to initialize the project.
 
@@ -101,7 +101,8 @@ You prefer the traditional way, ha? Oki doki, no judgements.
 
 Make sure your working directory is the same with the project and virtualenv package is installed in your OS.
 
-For Windows:
+<details>
+<summary>Windows</summary>
 
 ```bash
 > pwd
@@ -114,18 +115,24 @@ For Windows:
 > pip install -r requirements.txt
 ```
 
-For Linux:
+</details>
+
+<details>
+<summary>Linux</summary>
 
 ```bash
-~$ pwd
+$ pwd
 /stock-management-api
 
-~$ python3 -m venv env
+$ python3 -m venv env
 
-~$ source env/bin/activate
+$ source env/bin/activate
 
-~$ pip3 install requirements.txt
+$ pip3 install requirements.txt
 ```
+
+</details>
+
 
 After activating the env, run the following commands:
 
