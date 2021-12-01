@@ -84,10 +84,10 @@ Thanks to the magical technology of Docker, you can build and initialize the pro
 - Make sure your OS contains Docker[^1] and Docker Compose[^2] and your working directory is the same with the project.
 
 ```bash
-~$ pwd
+$ pwd
 /stock-management-api
 
-~$ docker-compose up
+$ docker-compose up
 ```
 
 With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
