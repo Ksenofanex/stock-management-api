@@ -36,7 +36,7 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 # Installation
 
-### Clone the project
+## Clone the project
 
 Depending on the choice of yours, you can clone the project in various ways. Either via IDE, Git Desktop or Git commands.
 
@@ -53,7 +53,7 @@ $ pwd
 /stock-management-api
 ```
 
-### Environment Variables
+## Environment Variables
 
 Before installing the project, you first need to configure environment variables in the [.env](stockmanagement_project/.env) file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
 
