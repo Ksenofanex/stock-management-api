@@ -4,16 +4,16 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 # Live showcase
 
-### Authentication
-***
+## Authentication
+
 
 - [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
 
 - [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/materials) 
 
-***
-### Pages
-***
+
+## Pages
+
 
 - [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/materials/)
 
@@ -25,14 +25,14 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 - [Measurements Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/measurements/) 
 
-***
+
 ### Docs
-***
+
 
 - [Swagger-Documents Page](https://stockmanagementksenofanex.herokuapp.com/swagger-docs/)
 
 - [Documents Page](https://stockmanagementksenofanex.herokuapp.com/docs/)
-***
+
 
 # Installation
 
@@ -42,7 +42,7 @@ Depending on the choice of yours, you can clone the project in various ways. Eit
 
 Whatever the case, make sure Git is installed and after cloning the project, you are at the same working directory with the project.
 
-Look below for cloning the project via bash:
+- Look below for cloning the project via bash:
 
 ```bash
 $ git clone https://github.com/Ksenofanex/stock-management-api.git
@@ -80,7 +80,7 @@ SECRET_KEY=itdb4-_wc!=*hgl3)h@v$#jy7bxingn(n+qklsdso%9yq&c5)!
 
 Thanks to the magical technology of Docker, you can build and initialize the project with single command. Like hokus pokus!
 
-Make sure your OS contains Docker[^1] and Docker Compose[^2] and your working directory is the same with the project.
+- Make sure your OS contains Docker[^1] and Docker Compose[^2] and your working directory is the same with the project.
 
 ```bash
 ~$ pwd
@@ -89,17 +89,17 @@ Make sure your OS contains Docker[^1] and Docker Compose[^2] and your working di
 ~$ docker-compose up
 ```
 
-With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
+- With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
 
 ![Docker successfully initialized project output](https://i.imgur.com/PiTp1cL.png)
 
-Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
+- Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
 ## Venv
 
 You prefer the traditional way, ha? Oki doki, no judgements.
 
-Make sure your working directory is the same with the project and virtualenv package is installed in your OS.
+- Make sure your working directory is the same with the project and virtualenv package is installed in your OS.
 
 <details>
 <summary>Windows</summary>
@@ -134,7 +134,7 @@ $ pip3 install requirements.txt
 </details>
 
 
-After activating the env, run the following commands:
+- After activating the env, run the following commands:
 
 ```bash
 $ python manage.py makemigrations
@@ -146,7 +146,7 @@ $ python manage.py runserver
 
 ![Venv success output](https://i.imgur.com/k3zGPJ3.png)
 
-Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
+- Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
 [^1]: https://www.docker.com/products/docker-desktop
 [^2]: https://docs.docker.com/compose/install/
