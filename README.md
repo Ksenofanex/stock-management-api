@@ -26,7 +26,7 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 - [Measurements Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/measurements/) 
 
 
-### Docs
+## Docs
 
 
 - [Swagger-Documents Page](https://stockmanagementksenofanex.herokuapp.com/swagger-docs/)
@@ -55,17 +55,17 @@ $ pwd
 
 ### Environment Variables
 
-* Before installing the project, you first need to configure environment variables in the [.env](stockmanagement_project/.env) file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
+Before installing the project, you first need to configure environment variables in the [.env](stockmanagement_project/.env) file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
 * You can generate the `SECRET_KEY` via sites like [this](https://djecrety.ir/) and add it to the [.env](https://github.com/Ksenofanex/stock-management-api/blob/35955cdabcb12e3cdb0d9bcff4efa23bee921682/stockmanagement_project/.env#L2) file.
 
-* The layout of the [.env](stockmanagement_project/.env) file:
+The layout of the [.env](stockmanagement_project/.env) file:
 
 ```
 DEBUG=
 SECRET_KEY=
 ```
 
-* An example configuration for the [.env](stockmanagement_project/.env) file:
+An example configuration for the [.env](stockmanagement_project/.env) file:
 
 ```
 DEBUG=True
@@ -74,7 +74,7 @@ SECRET_KEY=itdb4-_wc!=*hgl3)h@v$#jy7bxingn(n+qklsdso%9yq&c5)!
 
 > Set DEBUG to True while developing and testing in local/testing environments. Otherwise, set DEBUG to False.
 
-* After properly configuring the environment variables, you can proceed to the [Docker](https://github.com/Ksenofanex/stock-management-api#docker) or [Venv](https://github.com/Ksenofanex/stock-management-api#venv) section to initialize the project.
+After properly configuring the environment variables, you can proceed to the [Docker](https://github.com/Ksenofanex/stock-management-api#docker) or [Venv](https://github.com/Ksenofanex/stock-management-api#venv) section to initialize the project.
 
 ## Docker
 
@@ -89,17 +89,17 @@ Thanks to the magical technology of Docker, you can build and initialize the pro
 ~$ docker-compose up
 ```
 
-- With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
+With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
 
 ![Docker successfully initialized project output](https://i.imgur.com/PiTp1cL.png)
 
-- Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
+Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
 ## Venv
 
 You prefer the traditional way, ha? Oki doki, no judgements.
 
-- Make sure your working directory is the same with the project and virtualenv package is installed in your OS.
+Make sure your working directory is the same with the project and virtualenv package is installed in your OS.
 
 <details>
 <summary>Windows</summary>
@@ -146,7 +146,7 @@ $ python manage.py runserver
 
 ![Venv success output](https://i.imgur.com/k3zGPJ3.png)
 
-- Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
+Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
 [^1]: https://www.docker.com/products/docker-desktop
 [^2]: https://docs.docker.com/compose/install/
