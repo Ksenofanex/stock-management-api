@@ -73,7 +73,7 @@ DEBUG=True
 SECRET_KEY=itdb4-_wc!=*hgl3)h@v$#jy7bxingn(n+qklsdso%9yq&c5)!
 ```
 
-* After properly configuring the environment variables, you can proceed to the Docker or Venv section to initialize the project.
+* After properly configuring the environment variables, you can proceed to the [Docker](https://github.com/Ksenofanex/stock-management-api#docker) or [Venv](https://github.com/Ksenofanex/stock-management-api#venv) section to initialize the project.
 
 ## Docker
 
