@@ -45,11 +45,11 @@ Whatever the case, make sure Git is installed and after cloning the project, you
 Look below for cloning the project via Git:
 
 ```bash
-git clone https://github.com/Ksenofanex/stock-management-api.git
+$ git clone https://github.com/Ksenofanex/stock-management-api.git
 
-cd stock-management-api
+$ cd stock-management-api
 
-pwd
+$ pwd
 /stock-management-api
 ```
 
@@ -83,10 +83,10 @@ Thanks to the magical technology of Docker, you can build and initialize the pro
 Make sure your OS contains Docker[^1] and Docker Compose[^2] and your working directory is the same with the project.
 
 ```bash
-pwd
+$ pwd
 /stock-management-api
 
-docker-compose up
+$ docker-compose up
 ```
 
 With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
@@ -104,37 +104,37 @@ Make sure your working directory is the same with the project and virtualenv pac
 For Windows:
 
 ```bash
-pwd
+> pwd
 /stock-management-api
 
-virtualenv env
+> virtualenv env
 
-.\env\Scripts\activate
+> .\env\Scripts\activate
 
-pip install -r requirements.txt
+> pip install -r requirements.txt
 ```
 
 For Linux:
 
 ```bash
-pwd
+$ pwd
 /stock-management-api
 
-python3 -m venv env
+$ python3 -m venv env
 
-source env/bin/activate
+$ source env/bin/activate
 
-pip3 install requirements.txt
+$ pip3 install requirements.txt
 ```
 
 After activating the env, run the following commands:
 
 ```bash
-python manage.py makemigrations
+$ python manage.py makemigrations
 
-python manage.py migrate
+$ python manage.py migrate
 
-python manage.py runserver
+$ python manage.py runserver
 ```
 
 ![Venv success output](https://i.imgur.com/k3zGPJ3.png)
