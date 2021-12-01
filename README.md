@@ -39,9 +39,11 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 **Clone the project**
 
-Depending on the choice of yours, you can clone the project in various ways. Either via IDE or Git commands.
+Depending on the choice of yours, you can clone the project in various ways. Either via IDE, Git Desktop or Git commands.
 
-Whatever the case, make sure Git is installed and after cloning the project, you are at the same working directory with the project. Look below for cloning the project via Git:
+Whatever the case, make sure Git is installed and after cloning the project, you are at the same working directory with the project.
+
+Look below for cloning the project via Git:
 
 ```
 git clone https://github.com/Ksenofanex/stock-management-api.git
