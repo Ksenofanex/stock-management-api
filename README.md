@@ -4,7 +4,6 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 # Live showcase
 
-***
 ### Authentication
 ***
 
