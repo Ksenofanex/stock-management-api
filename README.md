@@ -45,7 +45,7 @@ Whatever the case, make sure Git is installed and after cloning the project, you
 
 Look below for cloning the project via Git:
 
-```
+```bash
 git clone https://github.com/Ksenofanex/stock-management-api.git
 
 cd stock-management-api
@@ -57,7 +57,7 @@ pwd
 **Environment Variables**
 
 * Before installing the project, you first need to configure environment variables in the [.env](stockmanagement_project/.env) file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
-* You can generate the SECRET_KEY via sites like [this](https://djecrety.ir/) and add it to the [.env](https://github.com/Ksenofanex/stock-management-api/blob/35955cdabcb12e3cdb0d9bcff4efa23bee921682/stockmanagement_project/.env#L2) file.
+* You can generate the `SECRET_KEY` via sites like [this](https://djecrety.ir/) and add it to the [.env](https://github.com/Ksenofanex/stock-management-api/blob/35955cdabcb12e3cdb0d9bcff4efa23bee921682/stockmanagement_project/.env#L2) file.
 
 * The layout of the [.env](stockmanagement_project/.env) file:
 
@@ -83,7 +83,7 @@ Thanks to the magical technology of Docker, you can build and initialize the pro
 
 Make sure your OS contains Docker[^1] and Docker Compose[^2] and your working directory is the same with the project.
 
-```
+```bash
 pwd
 /stock-management-api
 
@@ -104,7 +104,7 @@ Make sure your working directory is the same with the project and virtualenv pac
 
 For Windows:
 
-```
+```bash
 pwd
 /stock-management-api
 
@@ -117,7 +117,7 @@ pip install -r requirements.txt
 
 For Linux:
 
-```
+```bash
 python3 -m venv env
 
 source env/bin/activate
@@ -127,7 +127,7 @@ pip3 install requirements.txt
 
 After activating the env, run the following commands:
 
-```
+```bash
 python manage.py makemigrations
 
 python manage.py migrate
