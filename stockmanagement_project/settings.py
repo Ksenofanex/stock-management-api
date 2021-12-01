@@ -133,7 +133,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [  # For auth & authorization.
+    "DEFAULT_PERMISSION_CLASSES": [  # For authentication & authorization.
         # Which users are going to be able to see and what can they do?
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
         # IsAuthenticated, AllowAny etc.
