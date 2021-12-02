@@ -6,6 +6,7 @@ RUN apk update && apk add python3-dev
 
 # To disable .pyc files.
 ENV PYTHONDONTWRITEBYTECODE 1
+# To show outputs in terminal in real time, with no buffering.
 ENV PYTHONUNBUFFERED 1
 
 # Set work directory.

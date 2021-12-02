@@ -92,7 +92,7 @@ $ docker-compose up
 
 With that single line of command, Docker will take care of everything.
 
-![Docker Compose GIF](https://i.imgur.com/9rjmZjp.gif)
+![Docker Compose GIF](https://i.imgur.com/dD2iJ0k.gif)
 
 - After the building and initializing process, you must see this output:
 
