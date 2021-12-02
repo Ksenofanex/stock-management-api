@@ -90,12 +90,13 @@ $ pwd
 $ docker-compose up
 ```
 
-With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
+With that single line of command, Docker will take care of everything.
 
 ![Docker Compose GIF](https://i.imgur.com/9rjmZjp.gif)
 
+- After building and initializing process, you must see this output:
 
-![Docker successfully initialized project output](https://i.imgur.com/PiTp1cL.png)
+![Docker successfully initialized project output](https://i.imgur.com/K7FIMMK.png)
 
 Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
@@ -149,6 +150,8 @@ $ python manage.py runserver
 ```
 
 ![Venv GIF](https://i.imgur.com/OJ8SwFC.gif)
+
+- After the initializing process, you must see this output:
 
 ![Venv success output](https://i.imgur.com/k3zGPJ3.png)
 
