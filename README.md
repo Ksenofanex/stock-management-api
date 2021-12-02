@@ -81,7 +81,7 @@ After properly configuring the environment variables, you can proceed to the [Do
 
 Thanks to the magical technology of Docker, you can build and initialize the project with single command. Like hokus pokus!
 
-- Make sure your OS contains Docker[^1] and Docker Compose[^2] and your working directory is the same with the project.
+- Make sure your OS contains Docker[^1] and Docker Compose[^2], Docker Desktop is open and your working directory is the same with the project.
 
 ```bash
 $ pwd
@@ -94,7 +94,7 @@ With that single line of command, Docker will take care of everything.
 
 ![Docker Compose GIF](https://i.imgur.com/9rjmZjp.gif)
 
-- After building and initializing process, you must see this output:
+- After the building and initializing process, you must see this output:
 
 ![Docker successfully initialized project output](https://i.imgur.com/K7FIMMK.png)
 
