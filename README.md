@@ -92,7 +92,7 @@ $ docker-compose up
 
 With that single line of command, Docker will take care of everything. After building and initializing process, you must see this output:
 
-![Docker Compose GIF](https://i.imgur.com/tyL8geb.gif)
+![Docker Compose GIF](https://i.imgur.com/9rjmZjp.gif)
 
 
 ![Docker successfully initialized project output](https://i.imgur.com/PiTp1cL.png)
