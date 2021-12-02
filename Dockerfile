@@ -1,9 +1,8 @@
 # Python version.
-FROM python:3.7
+FROM python:3.7-alpine
 
 # To prevent package installation errors.
-RUN apt-get update
-RUN apt-get install build-essential
+RUN apk update && apk add python3-dev
 
 # To disable .pyc files.
 ENV PYTHONDONTWRITEBYTECODE 1
