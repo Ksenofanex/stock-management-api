@@ -118,7 +118,15 @@ You prefer the traditional way, ha? Oki doki, no judgements.
 > .\env\Scripts\activate
 
 > pip install -r requirements.txt
+
+> python manage.py makemigrations
+
+> python manage.py migrate
+
+> python manage.py runserver
 ```
+
+![Venv GIF](https://i.imgur.com/OJ8SwFC.gif)
 
 </details>
 
@@ -134,14 +142,7 @@ $ python3 -m venv env
 $ source env/bin/activate
 
 $ pip3 install requirements.txt
-```
 
-</details>
-
-
-After activating the env, run the following commands:
-
-```bash
 $ python manage.py makemigrations
 
 $ python manage.py migrate
@@ -149,7 +150,7 @@ $ python manage.py migrate
 $ python manage.py runserver
 ```
 
-![Venv GIF](https://i.imgur.com/OJ8SwFC.gif)
+</details>
 
 - After the initializing process, you must see this output:
 
