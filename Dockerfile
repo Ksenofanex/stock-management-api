@@ -1,4 +1,4 @@
-# Python version.
+# Python image version and variant.
 FROM python:3.7-alpine
 
 # To prevent package installation errors.
