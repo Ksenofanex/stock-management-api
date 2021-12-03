@@ -57,7 +57,7 @@ $ pwd
 
 Before installing the project, you need a proper `.env` file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
 
-The project has a fictional env file for educational purposes. You can either rename the [.env.example](.env.example) file as `.env` or enter the command below to the bash to clone a proper `.env` file:
+The project has a fictional [env file](.env.example) for educational purposes. You can either manually create a `.env` file or enter the command below to the bash/terminal to clone a proper `.env` file:
 
 ```bash
 $ cp .env.example .env
