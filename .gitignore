@@ -2,7 +2,6 @@
 .idea/
 
 # Virtual env.
-.env
 .venv
 venv/
 ENV/
@@ -18,3 +17,6 @@ migrations/
 
 # VsCode related files.
 .vscode
+
+# Environment variables file.
+.env

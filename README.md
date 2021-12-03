@@ -55,18 +55,24 @@ $ pwd
 
 ## Environment Variables
 
-Before installing the project, you first need to configure environment variables in the [.env](stockmanagement_project/.env) file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
+Before installing the project, you need a proper `.env` file. The project's [settings.py](stockmanagement_project/settings.py) module is depending on these variables.
 
-- You can generate the `SECRET_KEY` via sites like [Djecrety](https://djecrety.ir/) and add it to the [.env](https://github.com/Ksenofanex/stock-management-api/blob/35955cdabcb12e3cdb0d9bcff4efa23bee921682/stockmanagement_project/.env#L2) file.
+The project has a fictional env file for educational purposes. You can either rename the [.env.example](.env.example) file as `.env` or enter the command below to the bash to clone a proper `.env` file:
 
-The layout of the [.env](stockmanagement_project/.env) file:
+```bash
+$ cp .env.example .env
+```
+
+- You can generate the `SECRET_KEY` via sites like [Djecrety](https://djecrety.ir/) and add it to the `.env` file.
+
+The layout of the `.env` file:
 
 ```
 DEBUG=
 SECRET_KEY=
 ```
 
-An example configuration for the [.env](stockmanagement_project/.env) file:
+An example configuration for the `.env` file:
 
 ```
 DEBUG=True
