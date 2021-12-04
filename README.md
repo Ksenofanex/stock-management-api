@@ -63,21 +63,14 @@ The project has a fictional [env file](.env.example) for educational purposes. Y
 $ cp .env.example .env
 ```
 
-- You can generate the `SECRET_KEY` via sites like [Djecrety](https://djecrety.ir/) and add it to the `.env` file.
-
-The layout of the `.env` file:
-
-```
-DEBUG=
-SECRET_KEY=
-```
-
 An example configuration for the `.env` file:
 
 ```
 DEBUG=True
 SECRET_KEY=itdb4-_wc!=*hgl3)h@v$#jy7bxingn(n+qklsdso%9yq&c5)!
 ```
+
+- You can generate the `SECRET_KEY` via sites like [Djecrety](https://djecrety.ir/) and add it to the `.env` file.
 
 > Set DEBUG to True while developing and testing in local/testing environments. Otherwise, set DEBUG to False.
 
