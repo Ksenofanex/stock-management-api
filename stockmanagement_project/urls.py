@@ -4,7 +4,6 @@ from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
-
 API_TITLE = "Stock Management API"
 API_DESCRIPTION = "A WEB API for managing stocks."
 schema_view = get_swagger_view(title=API_TITLE)

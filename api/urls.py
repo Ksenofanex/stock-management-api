@@ -7,7 +7,6 @@ from api.views import (
     MeasurementListViewSet,
 )
 
-
 urlpatterns = [
     path(
         "materials/",
