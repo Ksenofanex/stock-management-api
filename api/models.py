@@ -25,24 +25,24 @@ class RawMaterial(models.Model):
     )
     supplier = models.ForeignKey(
         to="api.Supplier",
-        blank=True,
         null=True,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name="materials",
         related_query_name="material",
     )
     measurement_type = models.ForeignKey(
         to="api.MeasurementType",
-        blank=True,
         null=True,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name="materials",
         related_query_name="material",
     )
     currency = models.ForeignKey(
         to="api.Currency",
-        blank=True,
         null=True,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name="materials",
         related_query_name="material",
