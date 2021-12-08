@@ -26,7 +26,7 @@ urlpatterns = [
         name="supplier-list",
     ),
     path(
-        "suppliers/<int:pk>",
+        "suppliers/<int:pk>/",
         SupplierListViewSet.as_view(
             {"get": "retrieve", "put": "update", "delete": "destroy"}
         ),
@@ -38,7 +38,7 @@ urlpatterns = [
         name="currency-list",
     ),
     path(
-        "currencies/<int:pk>",
+        "currencies/<int:pk>/",
         CurrencyListViewSet.as_view(
             {"get": "retrieve", "put": "update", "delete": "destroy"}
         ),
@@ -50,7 +50,7 @@ urlpatterns = [
         name="measurement-list",
     ),
     path(
-        "measurements/<int:pk>",
+        "measurements/<int:pk>/",
         MeasurementListViewSet.as_view(
             {"get": "retrieve", "put": "update", "delete": "destroy"}
         ),
