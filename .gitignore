@@ -21,3 +21,6 @@ migrations/
 
 # Environment variables file.
 .env
+
+# Local settings file.
+stockmanagement_project/settings_dev.py

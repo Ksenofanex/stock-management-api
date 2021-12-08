@@ -24,7 +24,7 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",  # Added it after django-allauth.
-    # Django Rest Framework
+]
+
+THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",  # Built-in token auth. You must add it after
     # adding TokenAuthentication to the bottom.
@@ -45,9 +47,14 @@ INSTALLED_APPS = [
     "rest_auth",  # Django-rest-auth for logging in & out and pass reset.
     # You can use it with allauth.
     "rest_auth.registration",
-    # Local apps
+]
+
+LOCAL_APPS = [
     "api.apps.ApiConfig",
 ]
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
