@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 
-from api.permissions import IsAuthorOrReadOnly
+from api.permissions import IsAccountantOrReadOnly
 from api.models import (
     RawMaterial,
     Supplier,
@@ -15,9 +15,9 @@ from api.serializers import (
 )
 
 
-class MaterialListViewSet(viewsets.ModelViewSet):
+class MaterialViewSet(viewsets.ModelViewSet):
     queryset = RawMaterial.objects.all()
-    permission_classes = (IsAuthorOrReadOnly,)
+    permission_classes = (IsAccountantOrReadOnly,)
     serializer_class = MaterialSerializer
 
     def perform_create(self, serializer):  # For setting the author field
@@ -26,16 +26,16 @@ class MaterialListViewSet(viewsets.ModelViewSet):
         return super().perform_create(serializer)
 
 
-class SupplierListViewSet(viewsets.ModelViewSet):
+class SupplierViewSet(viewsets.ModelViewSet):
     queryset = Supplier.objects.all()
     serializer_class = SupplierSerializer
 
 
-class CurrencyListViewSet(viewsets.ModelViewSet):
+class CurrencyViewSet(viewsets.ModelViewSet):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
 
 
-class MeasurementListViewSet(viewsets.ModelViewSet):
+class MeasurementViewSet(viewsets.ModelViewSet):
     queryset = MeasurementType.objects.all()
     serializer_class = MeasurementSerializer
