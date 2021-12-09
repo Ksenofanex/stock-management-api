@@ -16,7 +16,11 @@ from api.serializers import (
 
 
 class MaterialViewSet(viewsets.ModelViewSet):
-    queryset = RawMaterial.objects.all()
+    queryset = RawMaterial.objects.select_related(
+        "supplier",
+        "measurement_type",
+        "currency",
+    )
     permission_classes = (IsAccountantOrReadOnly,)
     serializer_class = MaterialSerializer
 
