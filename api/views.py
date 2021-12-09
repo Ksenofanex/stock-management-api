@@ -12,7 +12,7 @@ from api.serializers import (
     MaterialSerializer,
     SupplierSerializer,
     CurrencySerializer,
-    MeasurementSerializer,
+    MeasurementTypeSerializer,
 )
 
 
@@ -49,6 +49,6 @@ class CurrencyViewSet(viewsets.ModelViewSet):
     serializer_class = CurrencySerializer
 
 
-class MeasurementViewSet(viewsets.ModelViewSet):
+class MeasurementTypeViewSet(viewsets.ModelViewSet):
     queryset = MeasurementType.objects.all()
-    serializer_class = MeasurementSerializer
+    serializer_class = MeasurementTypeSerializer

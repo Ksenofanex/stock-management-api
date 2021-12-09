@@ -3,9 +3,9 @@ from rest_framework import serializers
 from api.models import RawMaterial, Supplier, MeasurementType, Currency
 
 
-class MeasurementSerializer(serializers.ModelSerializer):
+class MeasurementTypeSerializer(serializers.ModelSerializer):
     detail_url = serializers.HyperlinkedIdentityField(
-        view_name="measurement-detail", lookup_field="pk"
+        view_name="measurement-type-detail", lookup_field="pk"
     )  # Detail page.
 
     class Meta:
@@ -52,7 +52,7 @@ class MaterialSerializer(serializers.ModelSerializer):
         view_name="stock-detail", lookup_field="pk"
     )  # Detail page.
     supplier_nested = SupplierSerializer(source="supplier", read_only=True)
-    measurement_nested = MeasurementSerializer(
+    measurement_type_nested = MeasurementTypeSerializer(
         source="measurement_type", read_only=True
     )
     currency_nested = CurrencySerializer(source="currency", read_only=True)
@@ -65,7 +65,7 @@ class MaterialSerializer(serializers.ModelSerializer):
             "stock_url",
             "measurement_type",
             "measurement_value",
-            "measurement_nested",
+            "measurement_type_nested",
             "total_amount",
             "price",
             "currency",

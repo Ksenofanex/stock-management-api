@@ -4,7 +4,7 @@ from api.views import (
     MaterialViewSet,
     SupplierViewSet,
     CurrencyViewSet,
-    MeasurementViewSet,
+    MeasurementTypeViewSet,
 )
 
 urlpatterns = [
@@ -45,15 +45,15 @@ urlpatterns = [
         name="currency-detail",
     ),
     path(
-        "measurements/",
-        MeasurementViewSet.as_view({"get": "list", "post": "create"}),
-        name="measurement-list",
+        "measurement-types/",
+        MeasurementTypeViewSet.as_view({"get": "list", "post": "create"}),
+        name="measurement-type-list",
     ),
     path(
-        "measurements/<int:pk>/",
-        MeasurementViewSet.as_view(
+        "measurement-types/<int:pk>/",
+        MeasurementTypeViewSet.as_view(
             {"get": "retrieve", "put": "update", "delete": "destroy"}
         ),
-        name="measurement-detail",
+        name="measurement-type-detail",
     ),
 ]
