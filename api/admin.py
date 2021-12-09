@@ -13,6 +13,7 @@ class RawMaterialAdmin(admin.ModelAdmin):
     list_display = (
         "material_name",
         "total_amount",
+        "measurement_value",
         "price",
         "created_date",
         "updated_date",
@@ -28,7 +29,17 @@ class RawMaterialAdmin(admin.ModelAdmin):
     )
 
     fieldsets = (
-        ("Main", {"fields": ("material_name", "total_amount", "price")}),
+        (
+            "Main",
+            {
+                "fields": (
+                    "material_name",
+                    "total_amount",
+                    "measurement_value",
+                    "price",
+                )
+            },
+        ),
         (
             "Relations",
             {
