@@ -10,7 +10,11 @@ class MeasurementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MeasurementType
-        fields = "__all__"
+        fields = (
+            "code",
+            "name",
+            "detail_url",
+        )
 
 
 class CurrencySerializer(serializers.ModelSerializer):
@@ -20,7 +24,11 @@ class CurrencySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Currency
-        fields = "__all__"
+        fields = (
+            "code",
+            "name",
+            "detail_url",
+        )
 
 
 class SupplierSerializer(serializers.ModelSerializer):
@@ -30,7 +38,13 @@ class SupplierSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Supplier
-        fields = "__all__"
+        fields = (
+            "name",
+            "phone",
+            "email",
+            "address",
+            "detail_url",
+        )
 
 
 class MaterialSerializer(serializers.ModelSerializer):
@@ -50,6 +64,7 @@ class MaterialSerializer(serializers.ModelSerializer):
             "material_name",
             "stock_url",
             "measurement_type",
+            "measurement_value",
             "measurement_nested",
             "total_amount",
             "price",
@@ -60,3 +75,8 @@ class MaterialSerializer(serializers.ModelSerializer):
             "supplier",
             "supplier_nested",
         )
+        extra_kwargs = {
+            "measurement_type": {"write_only": True},
+            "currency": {"write_only": True},
+            "supplier": {"write_only": True},
+        }
