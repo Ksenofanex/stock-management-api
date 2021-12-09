@@ -10,6 +10,9 @@ class RawMaterial(models.Model):
     total_amount = models.DecimalField(
         verbose_name="total amount", max_digits=9, decimal_places=2
     )
+    measurement_value = models.IntegerField(
+        verbose_name="measurement value", default=0
+    )  # If MeasurementType is KG, setting this to 100 means 100 KG.
     price = models.DecimalField(
         verbose_name="price", max_digits=9, decimal_places=2
     )
@@ -66,10 +69,10 @@ class RawMaterial(models.Model):
 
 class Currency(models.Model):
     code = models.CharField(
-        verbose_name="code", max_length=3
+        verbose_name="code", max_length=3, unique=True
     )  # TRY, USD, EUR etc.
     name = models.CharField(
-        verbose_name="name", max_length=25
+        verbose_name="name", max_length=25, unique=True
     )  # Turkish Lira, U.S. Dollar etc.
 
     class Meta:
@@ -81,10 +84,16 @@ class Currency(models.Model):
 
 
 class MeasurementType(models.Model):
-    code = models.CharField(verbose_name="code", max_length=5)  # KG etc.
+    code = models.CharField(
+        verbose_name="code",
+        max_length=5,
+        unique=True,
+    )  # KG, L etc.
     name = models.CharField(
-        verbose_name="name", max_length=20
-    )  # Kilogram etc.
+        verbose_name="name",
+        max_length=20,
+        unique=True,
+    )  # Kilogram, Litre etc.
 
     class Meta:
         verbose_name = "Measurement Type"
