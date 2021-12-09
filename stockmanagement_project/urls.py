@@ -1,8 +1,11 @@
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
+
+import debug_toolbar
 
 API_TITLE = "Stock Management API"
 API_DESCRIPTION = "A WEB API for managing stocks."
@@ -36,3 +39,6 @@ urlpatterns = [
         include_docs_urls(title=API_TITLE, description=API_DESCRIPTION),
     ),
 ]
+
+if settings.DEBUG is True:
+    urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)),)

@@ -10,5 +10,5 @@ class IsAccountantOrReadOnly(
         ):  # SAFE.METHODS contain GET-OPTIONS-HEAD etc.
             return True
 
-        # Write permissions only allowed to the accountant of the stock.
+        # Write permissions only allowed to the accountant of the material.
         return obj.accountant == request.user
