@@ -17,6 +17,7 @@ from api.serializers import (
 
 class MaterialViewSet(viewsets.ModelViewSet):
     queryset = RawMaterial.objects.select_related(
+        "accountant",
         "supplier",
         "measurement_type",
         "currency",
