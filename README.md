@@ -17,13 +17,11 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 - [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/materials/)
 
-- [Material Detail Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/materials/1/) 
-
 - [Suppliers Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/suppliers/)
 
 - [Currencies Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/currencies/)
 
-- [Measurements Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/measurements/) 
+- [Measurement Types Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/measurement-types/) 
 
 
 ## Docs
