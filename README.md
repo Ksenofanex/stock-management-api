@@ -9,7 +9,7 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 - [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
 
-- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/materials) 
+- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/materials/) 
 
 
 ## Pages
@@ -110,6 +110,8 @@ You prefer the traditional way, ha? Oki doki, no judgements.
 > pwd
 /stock-management-api
 
+> pip install virtualenv
+
 > virtualenv env
 
 > .\env\Scripts\activate
@@ -134,17 +136,19 @@ You prefer the traditional way, ha? Oki doki, no judgements.
 $ pwd
 /stock-management-api
 
+$ pip3 install virtualenv
+
 $ python3 -m venv env
 
 $ source env/bin/activate
 
 $ pip3 install requirements.txt
 
-$ python manage.py makemigrations
+$ python3 manage.py makemigrations
 
-$ python manage.py migrate
+$ python3 manage.py migrate
 
-$ python manage.py runserver
+$ python3 manage.py runserver
 ```
 
 </details>
