@@ -28,7 +28,9 @@ urlpatterns = [
     path(
         "suppliers/<int:pk>/",
         SupplierViewSet.as_view(
-            {"get": "retrieve", }
+            {
+                "get": "retrieve",
+            }
         ),
         name="supplier-detail",
     ),
@@ -40,7 +42,9 @@ urlpatterns = [
     path(
         "currencies/<int:pk>/",
         CurrencyViewSet.as_view(
-            {"get": "retrieve", }
+            {
+                "get": "retrieve",
+            }
         ),
         name="currency-detail",
     ),
@@ -52,7 +56,9 @@ urlpatterns = [
     path(
         "measurement-types/<int:pk>/",
         MeasurementTypeViewSet.as_view(
-            {"get": "retrieve", }
+            {
+                "get": "retrieve",
+            }
         ),
         name="measurement-type-detail",
     ),
