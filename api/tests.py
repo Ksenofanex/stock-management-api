@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 
 from api.models import (
-    RawMaterial,
+    Material,
     MeasurementType,
     Supplier,
     Currency,
@@ -27,30 +27,33 @@ class MaterialTests(TestCase):
         currency = Currency.objects.create(
             code="USD", name="United States Dollar"
         )
-        test_material = RawMaterial.objects.create(
+        Material.objects.create(
             accountant=testuser1,
-            material_name="tesla model 3",
+            name="Tesla Model 3",
             measurement_type=measurement_type,
+            measurement_value=1650,
             total_amount=1,
-            price=50.00,
+            price=50000.00,
             currency=currency,
             supplier=supplier,
         )
 
     def test_material(self):
-        material = RawMaterial.objects.get(id=1)
+        material = Material.objects.get(id=1)
         accountant = f"{material.accountant}"
-        name = f"{material.material_name}"
+        name = f"{material.name}"
         measurement_type = f"{material.measurement_type}"
+        measurement_value = f"{material.measurement_value}"
         total_amount = f"{material.total_amount}"
         price = f"{material.price}"
         currency = f"{material.currency}"
         supplier = f"{material.supplier}"
 
         self.assertEqual(accountant, "testuser1")
-        self.assertEqual(name, "tesla model 3")
+        self.assertEqual(name, "Tesla Model 3")
         self.assertEqual(measurement_type, "KG")
+        self.assertEqual(measurement_value, "1650.00")
         self.assertEqual(total_amount, "1.00")
-        self.assertEqual(price, "50.00")
+        self.assertEqual(price, "50000.00")
         self.assertEqual(currency, "USD")
         self.assertEqual(supplier, "Tesla")
