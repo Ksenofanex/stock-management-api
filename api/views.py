@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from api.permissions import IsAccountantOrReadOnly
 from api.models import (
-    RawMaterial,
+    Material,
     Supplier,
     Currency,
     MeasurementType,
@@ -17,7 +17,7 @@ from api.serializers import (
 
 
 class MaterialViewSet(viewsets.ModelViewSet):
-    queryset = RawMaterial.objects.select_related(
+    queryset = Material.objects.select_related(
         "accountant",
         "supplier",
         "measurement_type",

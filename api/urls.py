@@ -11,14 +11,14 @@ urlpatterns = [
     path(
         "materials/",
         MaterialViewSet.as_view({"get": "list", "post": "create"}),
-        name="stock-list",
+        name="material-list",
     ),
     path(
         "materials/<int:pk>/",
         MaterialViewSet.as_view(
             {"get": "retrieve", "put": "update", "delete": "destroy"}
         ),
-        name="stock-detail",
+        name="material-detail",
     ),
     path(
         "suppliers/",
@@ -40,7 +40,7 @@ urlpatterns = [
     path(
         "currencies/<int:pk>/",
         CurrencyViewSet.as_view(
-            {"get": "retrieve", "put": "update", "delete": "destroy"}
+            {"get": "retrieve", }
         ),
         name="currency-detail",
     ),
@@ -52,7 +52,7 @@ urlpatterns = [
     path(
         "measurement-types/<int:pk>/",
         MeasurementTypeViewSet.as_view(
-            {"get": "retrieve", "put": "update", "delete": "destroy"}
+            {"get": "retrieve", }
         ),
         name="measurement-type-detail",
     ),

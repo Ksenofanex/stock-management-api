@@ -2,17 +2,24 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class RawMaterial(models.Model):
+class Material(models.Model):
     # Core fields
-    material_name = models.CharField(
-        verbose_name="material name", max_length=25
-    )
+    name = models.CharField(verbose_name="material name", max_length=25)
     total_amount = models.DecimalField(
-        verbose_name="total amount", max_digits=9, decimal_places=2
+        verbose_name="total amount",
+        max_digits=9,
+        decimal_places=2,
+        help_text="Total amount of material to stock.",
     )
-    measurement_value = models.IntegerField(
-        verbose_name="measurement value", default=0
-    )  # If MeasurementType is KG, setting this to 100 means 100 KG.
+    measurement_value = models.DecimalField(
+        verbose_name="measurement value",
+        max_digits=9,
+        decimal_places=2,
+        help_text=(
+            "If the selected Measurement Type is KG, then setting this value "
+            " to 1.87 means 1.87 KG."
+        ),
+    )
     price = models.DecimalField(
         verbose_name="price", max_digits=9, decimal_places=2
     )
@@ -60,20 +67,26 @@ class RawMaterial(models.Model):
     )
 
     class Meta:
-        verbose_name = "Raw Material"
-        verbose_name_plural = "Raw Materials"
+        verbose_name = "Material"
+        verbose_name_plural = "Materials"
 
     def __str__(self):
-        return self.material_name
+        return self.name
 
 
 class Currency(models.Model):
     code = models.CharField(
-        verbose_name="code", max_length=3, unique=True
-    )  # TRY, USD, EUR etc.
+        verbose_name="code",
+        max_length=3,
+        unique=True,
+        help_text="USD, EUR etc.",
+    )
     name = models.CharField(
-        verbose_name="name", max_length=25, unique=True
-    )  # Turkish Lira, U.S. Dollar etc.
+        verbose_name="name",
+        max_length=25,
+        unique=True,
+        help_text="United States Dollar, Euro etc.",
+    )
 
     class Meta:
         verbose_name = "Currency"
@@ -88,12 +101,14 @@ class MeasurementType(models.Model):
         verbose_name="code",
         max_length=5,
         unique=True,
-    )  # KG, L etc.
+        help_text="KG, L etc.",
+    )
     name = models.CharField(
         verbose_name="name",
         max_length=20,
         unique=True,
-    )  # Kilogram, Litre etc.
+        help_text="Kilogram, Litre etc.",
+    )
 
     class Meta:
         verbose_name = "Measurement Type"

@@ -1,24 +1,24 @@
 from django.contrib import admin
 
 from api.models import (
-    RawMaterial,
+    Material,
     Currency,
     Supplier,
     MeasurementType,
 )
 
 
-@admin.register(RawMaterial)
-class RawMaterialAdmin(admin.ModelAdmin):
+@admin.register(Material)
+class MaterialAdmin(admin.ModelAdmin):
     list_display = (
-        "material_name",
+        "name",
         "total_amount",
         "measurement_value",
         "price",
         "created_date",
         "updated_date",
     )
-    search_fields = ("material_name",)
+    search_fields = ("name",)
     list_filter = (
         "created_date",
         "updated_date",
@@ -33,7 +33,7 @@ class RawMaterialAdmin(admin.ModelAdmin):
             "Main",
             {
                 "fields": (
-                    "material_name",
+                    "name",
                     "total_amount",
                     "measurement_value",
                     "price",
