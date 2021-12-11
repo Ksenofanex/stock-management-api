@@ -28,7 +28,7 @@ urlpatterns = [
     path(
         "suppliers/<int:pk>/",
         SupplierViewSet.as_view(
-            {"get": "retrieve", "put": "update", "delete": "destroy"}
+            {"get": "retrieve", }
         ),
         name="supplier-detail",
     ),
