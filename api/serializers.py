@@ -4,53 +4,45 @@ from api.models import Material, Supplier, MeasurementType, Currency
 
 
 class MeasurementTypeSerializer(serializers.ModelSerializer):
-    detail_url = serializers.HyperlinkedIdentityField(
+    url = serializers.HyperlinkedIdentityField(
         view_name="measurement-type-detail", lookup_field="pk"
     )  # Detail page.
 
     class Meta:
         model = MeasurementType
         fields = (
+            "id",
+            "url",
             "code",
             "name",
-            "detail_url",
         )
 
 
 class CurrencySerializer(serializers.ModelSerializer):
-    detail_url = serializers.HyperlinkedIdentityField(
-        view_name="currency-detail", lookup_field="pk"
-    )  # Detail page.
-
     class Meta:
         model = Currency
         fields = (
+            "id",
+            "url",
             "code",
             "name",
-            "detail_url",
         )
 
 
 class SupplierSerializer(serializers.ModelSerializer):
-    detail_url = serializers.HyperlinkedIdentityField(
-        view_name="supplier-detail", lookup_field="pk"
-    )  # Detail page.
-
     class Meta:
         model = Supplier
         fields = (
+            "id",
+            "url",
             "name",
             "phone",
             "email",
             "address",
-            "detail_url",
         )
 
 
 class MaterialSerializer(serializers.ModelSerializer):
-    material_url = serializers.HyperlinkedIdentityField(
-        view_name="material-detail", lookup_field="pk"
-    )  # Detail page.
     supplier_nested = SupplierSerializer(source="supplier", read_only=True)
     measurement_type_nested = MeasurementTypeSerializer(
         source="measurement_type", read_only=True
@@ -61,10 +53,10 @@ class MaterialSerializer(serializers.ModelSerializer):
         model = Material
         fields = (
             "id",
+            "url",
             "name",
-            "material_url",
-            "measurement_type",
             "measurement_value",
+            "measurement_type",
             "measurement_type_nested",
             "total_amount",
             "price",
