@@ -24,19 +24,7 @@ class MaterialViewSet(viewsets.ModelViewSet):
         "currency",
     )
     serializer_class = MaterialSerializer
-
-    def perform_create(self, serializer):  # For setting the author field
-        # currently logged-in user.
-        serializer.validated_data["accountant"] = self.request.user
-        return super().perform_create(serializer)
-
-    def get_permissions(self):
-        if self.action in ["update", "destroy"]:
-            self.permission_classes = (IsAccountantOrReadOnly,)
-        else:
-            self.permission_classes = (IsAuthenticatedOrReadOnly,)
-
-        return super().get_permissions()
+    permission_classes = (IsAuthenticatedOrReadOnly, IsAccountantOrReadOnly,)
 
 
 class SupplierViewSet(viewsets.ModelViewSet):

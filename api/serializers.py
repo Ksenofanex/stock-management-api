@@ -75,8 +75,8 @@ class MaterialSerializer(serializers.ModelSerializer):
             "supplier",
             "supplier_nested",
         )
-        extra_kwargs = {
-            "measurement_type": {"write_only": True},
-            "currency": {"write_only": True},
-            "supplier": {"write_only": True},
-        }
+
+    def create(self, validated_data):
+        # For setting the accountant field currently logged-in user.
+        validated_data["accountant"] = self.context.get("request").user
+        return super().create(validated_data)
