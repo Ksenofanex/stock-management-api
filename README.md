@@ -89,7 +89,7 @@ $ docker-compose up
 
 With that single line of command, Docker will take care of everything.
 
-![Docker Compose GIF](https://i.imgur.com/dD2iJ0k.gif)
+![Docker Compose GIF](https://i.imgur.com/91tbxPS.gif)
 
 - After the building and initializing process, you must see this output:
 
@@ -125,7 +125,7 @@ You prefer the traditional way, ha? Oki doki, no judgements.
 > python manage.py runserver
 ```
 
-![Venv GIF](https://i.imgur.com/OJ8SwFC.gif)
+![Virtualenv GIF](https://i.imgur.com/0IbCroR.gif)
 
 </details>
 
@@ -155,7 +155,7 @@ $ python3 manage.py runserver
 
 - After the initializing process, you must see this output:
 
-![Venv success output](https://i.imgur.com/k3zGPJ3.png)
+![Virtualenv success output](https://i.imgur.com/k3zGPJ3.png)
 
 Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
