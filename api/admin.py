@@ -3,8 +3,8 @@ from django.contrib import admin
 from api.models import (
     Material,
     Currency,
-    Supplier,
     MeasurementType,
+    Supplier,
 )
 
 
@@ -79,6 +79,22 @@ class CurrencyAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(MeasurementType)
+class MeasurementTypeAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "code",
+    )
+    search_fields = (
+        "name",
+        "code",
+    )
+    list_filter = (
+        "name",
+        "code",
+    )
+
+
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
     list_display = (
@@ -95,20 +111,4 @@ class SupplierAdmin(admin.ModelAdmin):
         "name",
         "phone",
         "email",
-    )
-
-
-@admin.register(MeasurementType)
-class MeasurementTypeAdmin(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "code",
-    )
-    search_fields = (
-        "name",
-        "code",
-    )
-    list_filter = (
-        "name",
-        "code",
     )

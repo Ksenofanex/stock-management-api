@@ -1,6 +1,17 @@
 from rest_framework import serializers
 
-from api.models import Material, Supplier, MeasurementType, Currency
+from api.models import Material, Currency, MeasurementType, Supplier
+
+
+class CurrencySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Currency
+        fields = (
+            "id",
+            "url",
+            "code",
+            "name",
+        )
 
 
 class MeasurementTypeSerializer(serializers.ModelSerializer):
@@ -10,17 +21,6 @@ class MeasurementTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MeasurementType
-        fields = (
-            "id",
-            "url",
-            "code",
-            "name",
-        )
-
-
-class CurrencySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Currency
         fields = (
             "id",
             "url",

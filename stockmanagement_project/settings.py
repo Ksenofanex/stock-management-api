@@ -47,6 +47,8 @@ THIRD_PARTY_APPS = [
     "rest_auth",  # Django-rest-auth for logging in & out and pass reset.
     # You can use it with allauth.
     "rest_auth.registration",
+    "django_filters",
+    "crispy_forms",
 ]
 
 LOCAL_APPS = [
@@ -150,6 +152,9 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     # Important for DOCS. Won't work without it.
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend"
+    ],
 }
 
 EMAIL_BACKEND = (  # For pass reset e-mail and account confirmation.

@@ -2,9 +2,9 @@ from django.urls import path
 
 from api.views import (
     MaterialViewSet,
-    SupplierViewSet,
     CurrencyViewSet,
     MeasurementTypeViewSet,
+    SupplierViewSet,
 )
 
 urlpatterns = [
@@ -19,20 +19,6 @@ urlpatterns = [
             {"get": "retrieve", "put": "update", "delete": "destroy"}
         ),
         name="material-detail",
-    ),
-    path(
-        "suppliers/",
-        SupplierViewSet.as_view({"get": "list", "post": "create"}),
-        name="supplier-list",
-    ),
-    path(
-        "suppliers/<int:pk>/",
-        SupplierViewSet.as_view(
-            {
-                "get": "retrieve",
-            }
-        ),
-        name="supplier-detail",
     ),
     path(
         "currencies/",
@@ -61,5 +47,19 @@ urlpatterns = [
             }
         ),
         name="measurement-type-detail",
+    ),
+    path(
+        "suppliers/",
+        SupplierViewSet.as_view({"get": "list", "post": "create"}),
+        name="supplier-list",
+    ),
+    path(
+        "suppliers/<int:pk>/",
+        SupplierViewSet.as_view(
+            {
+                "get": "retrieve",
+            }
+        ),
+        name="supplier-detail",
     ),
 ]
