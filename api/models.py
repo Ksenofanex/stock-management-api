@@ -125,7 +125,7 @@ class Supplier(models.Model):
     phone = PhoneNumberField(
         verbose_name="phone",
         help_text=(
-            "Must a proper phone number including country code. "
+            "Must be a proper phone number, including country code. "
             "I.e.: +905051111111"
         ),
     )
