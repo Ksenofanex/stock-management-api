@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = [
     "rest_auth",  # Django-rest-auth for logging in & out and pass reset.
     # You can use it with allauth.
     "rest_auth.registration",
+    "phonenumber_field",
     "django_filters",
     "crispy_forms",
 ]

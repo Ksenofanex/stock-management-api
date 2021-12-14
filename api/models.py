@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class Material(models.Model):
     # Core fields
@@ -120,8 +122,12 @@ class MeasurementType(models.Model):
 
 class Supplier(models.Model):
     name = models.CharField(verbose_name="name", max_length=30)
-    phone = models.IntegerField(
+    phone = PhoneNumberField(
         verbose_name="phone",
+        help_text=(
+            "Must a proper phone number including country code. "
+            "I.e.: +905051111111"
+        ),
     )
     email = models.EmailField(
         verbose_name="email",
