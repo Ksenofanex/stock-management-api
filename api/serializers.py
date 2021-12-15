@@ -15,10 +15,6 @@ class CurrencySerializer(serializers.ModelSerializer):
 
 
 class MeasurementTypeSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name="measurement-type-detail", lookup_field="pk"
-    )  # Detail page.
-
     class Meta:
         model = MeasurementType
         fields = (
@@ -27,6 +23,12 @@ class MeasurementTypeSerializer(serializers.ModelSerializer):
             "code",
             "name",
         )
+        extra_kwargs = {
+            "url": {
+                "view_name": "measurement-type-detail",
+                "lookup_field": "pk",
+            }
+        }
 
 
 class SupplierSerializer(serializers.ModelSerializer):
