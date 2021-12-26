@@ -1,6 +1,6 @@
 from django.urls import path
 
-from api.views import (
+from api.viewsets import (
     MaterialViewSet,
     CurrencyViewSet,
     MeasurementTypeViewSet,
