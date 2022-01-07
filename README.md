@@ -97,6 +97,8 @@ With that single line of command, Docker will take care of everything.
 
 Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
 
+> You can access to the documentation of the project from this URLs (http://localhost:8000/swagger-docs/ or http://127.0.0.1:8000/swagger-docs/) to see all available endpoints.
+
 ## Venv
 
 You prefer the traditional way, ha? Oki doki, no judgements.
@@ -158,6 +160,8 @@ $ python3 manage.py runserver
 ![Virtualenv success output](https://i.imgur.com/k3zGPJ3.png)
 
 Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
+
+> You can access to the documentation of the project from this URLs (http://localhost:8000/swagger-docs/ or http://127.0.0.1:8000/swagger-docs/) to see all available endpoints.
 
 [^1]: https://www.docker.com/products/docker-desktop
 [^2]: https://docs.docker.com/compose/install/
