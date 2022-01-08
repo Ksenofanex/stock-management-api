@@ -12,15 +12,15 @@ from api.models import (
 class MaterialTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        testuser1 = User.objects.create_user(
-            username="testuser1", password="deneme123"
+        test_user_1 = User.objects.create_user(
+            username="test_user_1", password="deneme123"
         )
         measurement_type = MeasurementType.objects.create(
             code="KG", name="Kilogram"
         )
         supplier = Supplier.objects.create(
             name="Tesla",
-            phone=123,
+            phone="+905051111111",
             email="tesla@tesla.com",
             address="San Francisco-California-USA",
         )
@@ -28,7 +28,7 @@ class MaterialTests(TestCase):
             code="USD", name="United States Dollar"
         )
         Material.objects.create(
-            accountant=testuser1,
+            accountant=test_user_1,
             name="Tesla Model 3",
             measurement_type=measurement_type,
             measurement_value=1650,
@@ -38,7 +38,7 @@ class MaterialTests(TestCase):
             supplier=supplier,
         )
 
-    def test_material(self):
+    def test_if_material_is_created(self):
         material = Material.objects.get(id=1)
         accountant = f"{material.accountant}"
         name = f"{material.name}"
@@ -49,7 +49,7 @@ class MaterialTests(TestCase):
         currency = f"{material.currency}"
         supplier = f"{material.supplier}"
 
-        self.assertEqual(accountant, "testuser1")
+        self.assertEqual(accountant, "test_user_1")
         self.assertEqual(name, "Tesla Model 3")
         self.assertEqual(measurement_type, "KG")
         self.assertEqual(measurement_value, "1650.00")
