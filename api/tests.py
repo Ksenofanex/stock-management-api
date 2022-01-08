@@ -20,7 +20,7 @@ class MaterialTests(TestCase):
         )
         supplier = Supplier.objects.create(
             name="Tesla",
-            phone="+905051111111",
+            phone="+15051111111",
             email="tesla@tesla.com",
             address="San Francisco-California-USA",
         )

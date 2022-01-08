@@ -26,7 +26,7 @@ class Material(models.Model):
         verbose_name="price", max_digits=9, decimal_places=2
     )
 
-    # Foreign Key Relations
+    # ForeignKey Relations
     accountant = models.ForeignKey(
         User,
         null=True,
