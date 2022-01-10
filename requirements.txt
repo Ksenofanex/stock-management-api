@@ -10,3 +10,9 @@ django-filter==21.1
 django-crispy-forms==1.13.0
 django-phonenumber-field==6.0.0
 phonenumbers==8.12.39
+
+# Testing and mocking
+django-test-plus==2.2.0
+pytest-django==4.5.2
+factory-boy==3.2.1
+Faker==11.3.0
