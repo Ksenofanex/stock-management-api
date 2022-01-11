@@ -1,8 +1,10 @@
+from django.contrib.auth import get_user_model
+
 import factory
 
-from django.contrib.auth.models import User
-
 from api.models import Material, Currency, MeasurementType, Supplier
+
+User = get_user_model()
 
 
 class UserFactory(factory.django.DjangoModelFactory):

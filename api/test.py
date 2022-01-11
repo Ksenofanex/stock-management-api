@@ -1,6 +1,6 @@
-from test_plus.test import TestCase as PlusTestCase
-
 from rest_framework.test import APIClient
+
+from test_plus.test import TestCase as PlusTestCase
 
 from api.tests.factories import UserFactory
 
