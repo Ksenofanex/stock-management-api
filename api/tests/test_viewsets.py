@@ -28,7 +28,7 @@ class ViewSetTests(StockManagementAPITestCase):
             "total_amount": 1.00,
             "measurement_value": 100.00,
             "price": 999.00,
-            "accountant_id": test_user.id,
+            "accountant": test_user.id,
             "currency": currency.id,
             "measurement_type": measurement_type.id,
             "supplier": supplier.id,
