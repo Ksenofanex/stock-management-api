@@ -14,7 +14,7 @@ class ModelTests(StockManagementAPITestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test_user = UserFactory(username="test_user_1")
-        cls.currency = CurrencyFactory()
+        cls.currency = CurrencyFactory(code="USD", name="United States Dollar")
         cls.measurement_type = MeasurementTypeFactory()
         cls.supplier = SupplierFactory(
             name="Tesla",
@@ -24,9 +24,9 @@ class ModelTests(StockManagementAPITestCase):
         )
         cls.material = MaterialFactory(
             name="Tesla Model 3",
-            total_amount=1,
+            total_amount=1.00,
             accountant=cls.test_user,
-            measurement_value=1650,
+            measurement_value=1650.00,
             price=50000.00,
             currency=cls.currency,
             measurement_type=cls.measurement_type,

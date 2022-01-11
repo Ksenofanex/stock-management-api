@@ -35,8 +35,8 @@ class Material(models.Model):
         related_name="materials",
         related_query_name="material",
     )
-    supplier = models.ForeignKey(
-        to="api.Supplier",
+    currency = models.ForeignKey(
+        to="api.Currency",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -51,8 +51,8 @@ class Material(models.Model):
         related_name="materials",
         related_query_name="material",
     )
-    currency = models.ForeignKey(
-        to="api.Currency",
+    supplier = models.ForeignKey(
+        to="api.Supplier",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
