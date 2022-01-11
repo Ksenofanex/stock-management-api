@@ -12,14 +12,11 @@ from api.models import Material
 class ViewSetTests(StockManagementAPITestCase):
     def test_if_material_list_page_works(self):
         """Checks if material list page is accessible to all."""
-        url = self.reverse("material-list")
-        response = self.get(url)
-
+        response = self.get(url_name="material-list")
         assert response.status_code == status.HTTP_200_OK
 
     def test_if_material_list_page_post_works(self):
         """Checks if authenticated user is able to create Material."""
-        url = self.reverse("material-list")
         test_user = self.make_user("test1")
         currency, measurement_type, supplier = (
             CurrencyFactory(),
@@ -38,7 +35,7 @@ class ViewSetTests(StockManagementAPITestCase):
         }
 
         with self.login(test_user):
-            response = self.post(url, data=material_data)
+            response = self.post(url_name="material-list", data=material_data)
             assert response.status_code == status.HTTP_201_CREATED
 
         material = Material.objects.get(id=response.data.get("id"))
@@ -51,7 +48,6 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_material_list_page_post_permission(self):
         """Checks if unauthenticated user is able to create Material."""
-        url = self.reverse("material-list")
         material_data = {
             "name": "Test Material 1",
             "total_amount": 1.00,
@@ -59,5 +55,5 @@ class ViewSetTests(StockManagementAPITestCase):
             "price": 999.00,
         }
 
-        response = self.post(url, data=material_data)
+        response = self.post(url_name="material-list", data=material_data)
         assert response.status_code == status.HTTP_403_FORBIDDEN
