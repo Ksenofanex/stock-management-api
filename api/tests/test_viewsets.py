@@ -7,7 +7,7 @@ from api.tests.factories import (
     SupplierFactory,
     MaterialFactory,
 )
-from api.models import Material
+from api.models import Material, Currency, MeasurementType, Supplier
 
 
 class ViewSetTests(StockManagementAPITestCase):
@@ -158,6 +158,22 @@ class ViewSetTests(StockManagementAPITestCase):
         response = self.post(url_name="currency-list", data=currency_data)
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
+    def test_if_currency_list_page_post_works(self):
+        """Checks if authenticated user is able to create Currency."""
+        test_user = self.make_user("test1")
+        currency_data = {
+            "code": "BTC",
+            "name": "Bitcoin",
+        }
+
+        with self.login(test_user):
+            response = self.post(url_name="currency-list", data=currency_data)
+            assert response.status_code == status.HTTP_201_CREATED
+
+        currency = Currency.objects.get(id=response.data.get("id"))
+        assert currency.code == currency_data.get("code")
+        assert currency.name == currency_data.get("name")
+
     def test_if_currency_is_changeable(self):
         """Checks if any authenticated user is allowed to change Currency."""
         authenticated_user = self.make_user("authenticated_user")
@@ -177,6 +193,77 @@ class ViewSetTests(StockManagementAPITestCase):
         authenticated_user = self.make_user("authenticated_user")
         currency = CurrencyFactory()
         url = self.reverse("currency-detail", pk=currency.id)
+
+        with self.login(authenticated_user):
+            response = self.delete(url_name=url)
+            assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
+    def test_if_measurement_type_list_page_works(self):
+        """Checks if measurement type list page is accessible to all."""
+        response = self.get(url_name="measurement-type-list")
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_if_measurement_type_detail_page_works(self):
+        """Checks if measurement type detail page is accessible to all."""
+        measurement_type = MeasurementTypeFactory()
+        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
+
+        response = self.get(url_name=url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_measurement_type_list_page_post_permission(self):
+        """Checks if unauthenticated user is able to create MeasurementType."""
+        measurement_type_data = {
+            "code": "KG",
+            "name": "Kilogram",
+        }
+
+        response = self.post(
+            url_name="measurement-type-list", data=measurement_type_data
+        )
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_if_measurement_type_list_page_post_works(self):
+        """Checks if authenticated user is able to create MeasurementType."""
+        test_user = self.make_user("test1")
+        measurement_type_data = {
+            "code": "LB",
+            "name": "Pound",
+        }
+
+        with self.login(test_user):
+            response = self.post(
+                url_name="measurement-type-list", data=measurement_type_data
+            )
+            assert response.status_code == status.HTTP_201_CREATED
+
+        measurement_type = MeasurementType.objects.get(
+            id=response.data.get("id")
+        )
+        assert measurement_type.code == measurement_type_data.get("code")
+        assert measurement_type.name == measurement_type_data.get("name")
+
+    def test_if_measurement_type_is_changeable(self):
+        """Checks if any authenticated user is allowed to change
+        MeasurementType."""
+        authenticated_user = self.make_user("authenticated_user")
+        measurement_type = MeasurementTypeFactory()
+        measurement_type_data = {
+            "code": "L",
+            "name": "Liter",
+        }
+        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
+
+        with self.login(authenticated_user):
+            response = self.put(url_name=url, data=measurement_type_data)
+            assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
+    def test_if_measurement_type_is_deletable(self):
+        """Checks if any authenticated user is allowed to delete
+        MeasurementType."""
+        authenticated_user = self.make_user("authenticated_user")
+        measurement_type = MeasurementTypeFactory()
+        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
 
         with self.login(authenticated_user):
             response = self.delete(url_name=url)
