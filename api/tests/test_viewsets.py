@@ -135,3 +135,49 @@ class ViewSetTests(StockManagementAPITestCase):
 
         assert Material.objects.count() == 0
 
+    def test_if_currency_list_page_works(self):
+        """Checks if currency list page is accessible to all."""
+        response = self.get(url_name="currency-list")
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_if_currency_detail_page_works(self):
+        """Checks if currency detail page is accessible to all."""
+        currency = CurrencyFactory()
+        url = self.reverse("currency-detail", pk=currency.id)
+
+        response = self.get(url_name=url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_currency_list_page_post_permission(self):
+        """Checks if unauthenticated user is able to create Currency."""
+        currency_data = {
+            "code": "ZWL",
+            "name": "Zimbabwean Dollar",
+        }
+
+        response = self.post(url_name="currency-list", data=currency_data)
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_if_currency_is_changeable(self):
+        """Checks if any authenticated user is allowed to change Currency."""
+        authenticated_user = self.make_user("authenticated_user")
+        currency = CurrencyFactory()
+        currency_data = {
+            "code": "USDT",
+            "name": "Tether",
+        }
+        url = self.reverse("currency-detail", pk=currency.id)
+
+        with self.login(authenticated_user):
+            response = self.put(url_name=url, data=currency_data)
+            assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
+    def test_if_currency_is_deletable(self):
+        """Checks if any authenticated user is allowed to delete Currency."""
+        authenticated_user = self.make_user("authenticated_user")
+        currency = CurrencyFactory()
+        url = self.reverse("currency-detail", pk=currency.id)
+
+        with self.login(authenticated_user):
+            response = self.delete(url_name=url)
+            assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED

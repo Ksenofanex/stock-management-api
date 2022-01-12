@@ -9,7 +9,7 @@ from api.tests.factories import (
 
 
 class ModelTests(StockManagementAPITestCase):
-    """Creates mock models and tests if they are created successfully."""
+    """Creates mock models and checks if they are created successfully."""
 
     @classmethod
     def setUpTestData(cls):
