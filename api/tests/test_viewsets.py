@@ -73,13 +73,13 @@ class ViewSetTests(StockManagementAPITestCase):
         can change Material."""
         unauthorized_user = self.make_user("unauthorized_user")
         material = MaterialFactory()
+        url = self.reverse("material-detail", pk=material.id)
         material_data = {
             "name": "Changed Material",
             "total_amount": 2.00,
             "measurement_value": 50.00,
             "price": 19.00,
         }
-        url = self.reverse("material-detail", pk=material.id)
 
         with self.login(unauthorized_user):
             response = self.put(url_name=url, data=material_data)
@@ -90,13 +90,13 @@ class ViewSetTests(StockManagementAPITestCase):
         change Material."""
         authorized_user = self.make_user("authorized_user")
         material = MaterialFactory(accountant=authorized_user)
+        url = self.reverse("material-detail", pk=material.id)
         material_data = {
             "name": "Changed Material",
             "total_amount": 2.00,
             "measurement_value": 50.00,
             "price": 19.00,
         }
-        url = self.reverse("material-detail", pk=material.id)
 
         with self.login(authorized_user):
             response = self.put(url_name=url, data=material_data)
@@ -178,11 +178,11 @@ class ViewSetTests(StockManagementAPITestCase):
         """Checks if any authenticated user is allowed to change Currency."""
         authenticated_user = self.make_user("authenticated_user")
         currency = CurrencyFactory()
+        url = self.reverse("currency-detail", pk=currency.id)
         currency_data = {
             "code": "USDT",
             "name": "Tether",
         }
-        url = self.reverse("currency-detail", pk=currency.id)
 
         with self.login(authenticated_user):
             response = self.put(url_name=url, data=currency_data)
@@ -248,11 +248,11 @@ class ViewSetTests(StockManagementAPITestCase):
         MeasurementType."""
         authenticated_user = self.make_user("authenticated_user")
         measurement_type = MeasurementTypeFactory()
+        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
         measurement_type_data = {
             "code": "L",
             "name": "Liter",
         }
-        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
 
         with self.login(authenticated_user):
             response = self.put(url_name=url, data=measurement_type_data)
@@ -318,13 +318,13 @@ class ViewSetTests(StockManagementAPITestCase):
         """Checks if any authenticated user is allowed to change Supplier."""
         authenticated_user = self.make_user("authenticated_user")
         supplier = SupplierFactory()
+        url = self.reverse("supplier-detail", pk=supplier.id)
         supplier_data = {
             "name": "Wayne Enterprise",
             "phone": "+905051111111",
             "email": "richboibruce@thebatman.com",
             "address": "Gotham",
         }
-        url = self.reverse("supplier-detail", pk=supplier.id)
 
         with self.login(authenticated_user):
             response = self.put(url_name=url, data=supplier_data)
