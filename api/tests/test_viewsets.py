@@ -70,7 +70,7 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_if_unauthorized_user_can_change_material(self):
         """Checks if unauthorized user (i.e., user that doesn't own material)
-        can change material."""
+        can change Material."""
         unauthorized_user = self.make_user("unauthorized_user")
         material = MaterialFactory()
         material_data = {
@@ -87,7 +87,7 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_if_authorized_user_can_change_material(self):
         """Checks if authorized user (i.e., user that owns material) can
-        change material."""
+        change Material."""
         authorized_user = self.make_user("authorized_user")
         material = MaterialFactory(accountant=authorized_user)
         material_data = {
@@ -113,7 +113,7 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_if_unauthorized_user_can_delete_material(self):
         """Checks if unauthorized user (i.e., user that doesn't own material)
-        can delete material."""
+        can delete Material."""
         unauthorized_user = self.make_user("unauthorized_user")
         material = MaterialFactory()
         url = self.reverse("material-detail", pk=material.id)
@@ -124,7 +124,7 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_if_authorized_user_can_delete_material(self):
         """Checks if authorized user (i.e., user that owns material) can
-        delete material."""
+        delete Material."""
         authorized_user = self.make_user("authorized_user")
         material = MaterialFactory(accountant=authorized_user)
         url = self.reverse("material-detail", pk=material.id)
