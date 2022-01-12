@@ -12,3 +12,7 @@ venv/
 
 # Local db.
 db.sqlite3
+
+# Pycaches.
+__pycache__/
+.pytest_cache/
