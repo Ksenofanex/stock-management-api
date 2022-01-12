@@ -5,6 +5,7 @@ from api.tests.factories import (
     CurrencyFactory,
     MeasurementTypeFactory,
     SupplierFactory,
+    MaterialFactory,
 )
 from api.models import Material
 
@@ -14,6 +15,26 @@ class ViewSetTests(StockManagementAPITestCase):
         """Checks if material list page is accessible to all."""
         response = self.get(url_name="material-list")
         assert response.status_code == status.HTTP_200_OK
+
+    def test_if_material_detail_page_works(self):
+        """Checks if material detail page is accessible to all."""
+        material = MaterialFactory()
+        url = self.reverse("material-detail", pk=material.id)
+
+        response = self.get(url_name=url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_material_list_page_post_permission(self):
+        """Checks if unauthenticated user is able to create Material."""
+        material_data = {
+            "name": "Test Material 1",
+            "total_amount": 1.00,
+            "measurement_value": 100.00,
+            "price": 999.00,
+        }
+
+        response = self.post(url_name="material-list", data=material_data)
+        assert response.status_code == status.HTTP_403_FORBIDDEN
 
     def test_if_material_list_page_post_works(self):
         """Checks if authenticated user is able to create Material."""
@@ -45,15 +66,72 @@ class ViewSetTests(StockManagementAPITestCase):
             "measurement_value"
         )
         assert material.price == material_data.get("price")
+        assert material.accountant == test_user
 
-    def test_material_list_page_post_permission(self):
-        """Checks if unauthenticated user is able to create Material."""
+    def test_if_unauthorized_user_can_change_material(self):
+        """Checks if unauthorized user (i.e., user that doesn't own material)
+        can change material."""
+        unauthorized_user = self.make_user("unauthorized_user")
+        material = MaterialFactory()
         material_data = {
-            "name": "Test Material 1",
-            "total_amount": 1.00,
-            "measurement_value": 100.00,
-            "price": 999.00,
+            "name": "Changed Material",
+            "total_amount": 2.00,
+            "measurement_value": 50.00,
+            "price": 19.00,
         }
+        url = self.reverse("material-detail", pk=material.id)
 
-        response = self.post(url_name="material-list", data=material_data)
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        with self.login(unauthorized_user):
+            response = self.put(url_name=url, data=material_data)
+            assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_if_authorized_user_can_change_material(self):
+        """Checks if authorized user (i.e., user that owns material) can
+        change material."""
+        authorized_user = self.make_user("authorized_user")
+        material = MaterialFactory(accountant=authorized_user)
+        material_data = {
+            "name": "Changed Material",
+            "total_amount": 2.00,
+            "measurement_value": 50.00,
+            "price": 19.00,
+        }
+        url = self.reverse("material-detail", pk=material.id)
+
+        with self.login(authorized_user):
+            response = self.put(url_name=url, data=material_data)
+            assert response.status_code == status.HTTP_200_OK
+
+        material = Material.objects.get(id=response.data.get("id"))
+        assert material.name == material_data.get("name")
+        assert material.total_amount == material_data.get("total_amount")
+        assert material.measurement_value == material_data.get(
+            "measurement_value"
+        )
+        assert material.price == material_data.get("price")
+        assert material.accountant == authorized_user
+
+    def test_if_unauthorized_user_can_delete_material(self):
+        """Checks if unauthorized user (i.e., user that doesn't own material)
+        can delete material."""
+        unauthorized_user = self.make_user("unauthorized_user")
+        material = MaterialFactory()
+        url = self.reverse("material-detail", pk=material.id)
+
+        with self.login(unauthorized_user):
+            response = self.delete(url_name=url)
+            assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_if_authorized_user_can_delete_material(self):
+        """Checks if authorized user (i.e., user that owns material) can
+        delete material."""
+        authorized_user = self.make_user("authorized_user")
+        material = MaterialFactory(accountant=authorized_user)
+        url = self.reverse("material-detail", pk=material.id)
+
+        with self.login(authorized_user):
+            response = self.delete(url_name=url)
+            assert response.status_code == status.HTTP_204_NO_CONTENT
+
+        assert Material.objects.count() == 0
+
