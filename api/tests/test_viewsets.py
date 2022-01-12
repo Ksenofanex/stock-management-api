@@ -268,3 +268,74 @@ class ViewSetTests(StockManagementAPITestCase):
         with self.login(authenticated_user):
             response = self.delete(url_name=url)
             assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
+    def test_if_supplier_list_page_works(self):
+        """Checks if supplier list page is accessible to all."""
+        response = self.get(url_name="supplier-list")
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_if_supplier_detail_page_works(self):
+        """Checks if supplier detail page is accessible to all."""
+        supplier = SupplierFactory()
+        url = self.reverse("supplier-detail", pk=supplier.id)
+
+        response = self.get(url_name=url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_supplier_list_page_post_permission(self):
+        """Checks if unauthenticated user is able to create Supplier."""
+        supplier_data = {
+            "name": "Vought International",
+            "phone": "+905051111111",
+            "email": "vought@boys.com",
+            "address": "Skyscraper, Center Of Evil",
+        }
+
+        response = self.post(url_name="supplier-list", data=supplier_data)
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_if_supplier_list_page_post_works(self):
+        """Checks if authenticated user is able to create Supplier."""
+        test_user = self.make_user("test1")
+        supplier_data = {
+            "name": "E Corp",
+            "phone": "+905051111111",
+            "email": "hack@me.com",
+            "address": "Distopia",
+        }
+
+        with self.login(test_user):
+            response = self.post(url_name="supplier-list", data=supplier_data)
+            assert response.status_code == status.HTTP_201_CREATED
+
+        supplier = Supplier.objects.get(id=response.data.get("id"))
+        assert supplier.name == supplier_data.get("name")
+        assert supplier.phone == supplier_data.get("phone")
+        assert supplier.email == supplier_data.get("email")
+        assert supplier.address == supplier_data.get("address")
+
+    def test_if_supplier_is_changeable(self):
+        """Checks if any authenticated user is allowed to change Supplier."""
+        authenticated_user = self.make_user("authenticated_user")
+        supplier = SupplierFactory()
+        supplier_data = {
+            "name": "Wayne Enterprise",
+            "phone": "+905051111111",
+            "email": "richboibruce@thebatman.com",
+            "address": "Gotham",
+        }
+        url = self.reverse("supplier-detail", pk=supplier.id)
+
+        with self.login(authenticated_user):
+            response = self.put(url_name=url, data=supplier_data)
+            assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
+    def test_if_supplier_is_deletable(self):
+        """Checks if any authenticated user is allowed to delete Supplier."""
+        authenticated_user = self.make_user("authenticated_user")
+        supplier = SupplierFactory()
+        url = self.reverse("supplier-detail", pk=supplier.id)
+
+        with self.login(authenticated_user):
+            response = self.delete(url_name=url)
+            assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
