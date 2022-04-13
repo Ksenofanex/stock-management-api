@@ -1,7 +1,8 @@
 # PyCharm related files.
 .idea
 
-# Virtual environment.
+# Virtual environment files.
+.venv
 venv/
 
 # Git files.
@@ -10,7 +11,7 @@ venv/
 # VsCode related files.
 .vscode
 
-# Local db.
+# Local DB.
 db.sqlite3
 
 # Pycaches.
