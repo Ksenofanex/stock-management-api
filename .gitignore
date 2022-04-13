@@ -1,13 +1,13 @@
-# PyCharm.
+# PyCharm related files.
 .idea/
 
-# Virtual env.
+# Virtual environment files.
 .venv
 venv/
 ENV/
 env/
 
-# DB.
+# Local DB.
 db.sqlite3
 
 # Pycaches.
