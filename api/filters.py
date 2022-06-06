@@ -8,6 +8,14 @@ class MaterialFilter(filters.FilterSet):
         field_name="name",
         lookup_expr="icontains",
     )
+    sku = filters.CharFilter(
+        field_name="sku",
+        lookup_expr="icontains",
+    )
+    extra_notes = filters.CharFilter(
+        field_name="extra_notes",
+        lookup_expr="icontains",
+    )
     currency_code = filters.CharFilter(
         field_name="currency__code",
         lookup_expr="icontains",
@@ -45,6 +53,8 @@ class MaterialFilter(filters.FilterSet):
         model = Material
         fields = [
             "name",
+            "sku",
+            "extra_notes",
             "currency_code",
             "currency_name",
             "measurement_type_code",

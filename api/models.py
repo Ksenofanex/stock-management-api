@@ -7,6 +7,12 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Material(models.Model):
     # Core fields
     name = models.CharField(verbose_name="material name", max_length=25)
+    sku = models.CharField(
+        verbose_name="stock keeping unit",
+        max_length=50,
+        unique=True,
+        help_text="Unique identifier for this material.",
+    )
     total_amount = models.DecimalField(
         verbose_name="total amount",
         max_digits=9,
@@ -25,6 +31,7 @@ class Material(models.Model):
     price = models.DecimalField(
         verbose_name="price", max_digits=9, decimal_places=2
     )
+    extra_notes = models.TextField(verbose_name="extra notes", blank=True)
 
     # ForeignKey Relations
     accountant = models.ForeignKey(

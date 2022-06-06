@@ -12,13 +12,14 @@ from api.models import (
 class MaterialAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "sku",
         "total_amount",
         "measurement_value",
         "price",
         "created_date",
         "updated_date",
     )
-    search_fields = ("name",)
+    search_fields = ("name", "sku")
     list_filter = (
         "created_date",
         "updated_date",
@@ -34,9 +35,11 @@ class MaterialAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "name",
+                    "sku",
                     "total_amount",
                     "measurement_value",
                     "price",
+                    "extra_notes",
                 )
             },
         ),
