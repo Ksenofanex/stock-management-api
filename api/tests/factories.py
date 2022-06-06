@@ -46,6 +46,7 @@ class MaterialFactory(factory.django.DjangoModelFactory):
         model = Material
 
     name = "Test Material"
+    sku = factory.Faker("bothify", text="????-????-????-####")
     total_amount = factory.Faker(
         "pydecimal",
         left_digits=9,

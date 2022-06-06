@@ -46,6 +46,7 @@ class ViewSetTests(StockManagementAPITestCase):
         )
         material_data = {
             "name": "Test Material 1",
+            "sku": "STD-MDL3-TSLA-BLCK-01",
             "total_amount": 1.00,
             "measurement_value": 100.00,
             "price": 999.00,
@@ -93,6 +94,7 @@ class ViewSetTests(StockManagementAPITestCase):
         url = self.reverse("material-detail", pk=material.id)
         material_data = {
             "name": "Changed Material",
+            "sku": "TST-SKU-CHNGD-01",
             "total_amount": 2.00,
             "measurement_value": 50.00,
             "price": 19.00,

@@ -24,6 +24,7 @@ class ModelTests(StockManagementAPITestCase):
         )
         cls.material = MaterialFactory(
             name="Tesla Model 3",
+            sku="STD-MDL3-TSLA-BLCK-01",
             total_amount=1.00,
             accountant=cls.test_user,
             measurement_value=1650.00,
@@ -35,6 +36,7 @@ class ModelTests(StockManagementAPITestCase):
 
     def test_if_material_is_created(self):
         assert self.material.name == "Tesla Model 3"
+        assert self.material.sku == "STD-MDL3-TSLA-BLCK-01"
         assert self.material.total_amount == 1.00
         assert self.material.measurement_value == 1650.00
         assert self.material.price == 50000.00
