@@ -156,6 +156,10 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend"
     ],
+    "DEFAULT_VERSIONING_CLASS": (  # For API versioning. Defined in namespace
+        # of root url. v1, v2 etc.
+        "rest_framework.versioning.NamespaceVersioning"
+    ),
 }
 
 EMAIL_BACKEND = (  # For pass reset e-mail and account confirmation.

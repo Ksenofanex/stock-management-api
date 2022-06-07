@@ -4,6 +4,8 @@ from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
+from api.urls import router as api_router
+
 API_TITLE = "Stock Management API"
 API_DESCRIPTION = "A Web API for managing stocks."
 schema_view = get_swagger_view(title=API_TITLE)
@@ -11,10 +13,8 @@ schema_view = get_swagger_view(title=API_TITLE)
 urlpatterns = [
     # Built-in Django urls
     path("admin/", admin.site.urls),
-
     # API
-    path("api/v1/", include("api.urls")),
-
+    path("api/", include((api_router.urls, "v1"))),
     # Built-in Django Rest url
     path(
         "api-auth/", include("rest_framework.urls")
@@ -28,7 +28,6 @@ urlpatterns = [
         "api/v1/rest-auth/registration/",
         include("rest_auth.registration.urls"),
     ),  # For user registration in API.
-
     # Schema & Documentation
     path("swagger-docs/", schema_view),
     path(

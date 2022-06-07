@@ -1,4 +1,4 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
 from api.viewsets import (
     MaterialViewSet,
@@ -7,59 +7,10 @@ from api.viewsets import (
     SupplierViewSet,
 )
 
-urlpatterns = [
-    path(
-        "materials/",
-        MaterialViewSet.as_view({"get": "list", "post": "create"}),
-        name="material-list",
-    ),
-    path(
-        "materials/<int:pk>/",
-        MaterialViewSet.as_view(
-            {"get": "retrieve", "put": "update", "delete": "destroy"}
-        ),
-        name="material-detail",
-    ),
-    path(
-        "currencies/",
-        CurrencyViewSet.as_view({"get": "list", "post": "create"}),
-        name="currency-list",
-    ),
-    path(
-        "currencies/<int:pk>/",
-        CurrencyViewSet.as_view(
-            {
-                "get": "retrieve",
-            }
-        ),
-        name="currency-detail",
-    ),
-    path(
-        "measurement-types/",
-        MeasurementTypeViewSet.as_view({"get": "list", "post": "create"}),
-        name="measurement-type-list",
-    ),
-    path(
-        "measurement-types/<int:pk>/",
-        MeasurementTypeViewSet.as_view(
-            {
-                "get": "retrieve",
-            }
-        ),
-        name="measurement-type-detail",
-    ),
-    path(
-        "suppliers/",
-        SupplierViewSet.as_view({"get": "list", "post": "create"}),
-        name="supplier-list",
-    ),
-    path(
-        "suppliers/<int:pk>/",
-        SupplierViewSet.as_view(
-            {
-                "get": "retrieve",
-            }
-        ),
-        name="supplier-detail",
-    ),
-]
+router = DefaultRouter()
+router.register("materials", MaterialViewSet, basename="material")
+router.register("currencies", CurrencyViewSet, basename="currency")
+router.register(
+    "measurement-types", MeasurementTypeViewSet, basename="measurement-type"
+)
+router.register("suppliers", SupplierViewSet, basename="supplier")
