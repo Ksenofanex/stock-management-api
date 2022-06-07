@@ -35,21 +35,34 @@ class MaterialViewSet(viewsets.ModelViewSet):
         IsAccountantOrReadOnly,
     )
     filterset_class = MaterialFilter
+    http_method_names = ["get", "post", "put", "patch", "delete"]
 
 
 class CurrencyViewSet(viewsets.ModelViewSet):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
     filterset_class = CurrencyFilter
+    http_method_names = [
+        "get",
+        "post",
+    ]
 
 
 class MeasurementTypeViewSet(viewsets.ModelViewSet):
     queryset = MeasurementType.objects.all()
     serializer_class = MeasurementTypeSerializer
     filterset_class = MeasurementTypeFilter
+    http_method_names = [
+        "get",
+        "post",
+    ]
 
 
 class SupplierViewSet(viewsets.ModelViewSet):
     queryset = Supplier.objects.all()
     serializer_class = SupplierSerializer
     filterset_class = SupplierFilter
+    http_method_names = [
+        "get",
+        "post",
+    ]
