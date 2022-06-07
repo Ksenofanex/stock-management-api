@@ -9,19 +9,21 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 - [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
 
-- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/v1/materials/) 
+- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/materials/) 
 
 
 ## Pages
 
 
-- [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/materials/)
+- [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/)
 
-- [Suppliers Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/suppliers/)
+- [Materials Page](https://stockmanagementksenofanex.herokuapp.com/api/materials/)
 
-- [Currencies Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/currencies/)
+- [Suppliers Page](https://stockmanagementksenofanex.herokuapp.com/api/suppliers/)
 
-- [Measurement Types Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/measurement-types/) 
+- [Currencies Page](https://stockmanagementksenofanex.herokuapp.com/api/currencies/)
+
+- [Measurement Types Page](https://stockmanagementksenofanex.herokuapp.com/api/measurement-types/) 
 
 
 ## Docs
@@ -95,7 +97,7 @@ With that single line of command, Docker will take care of everything.
 
 ![Docker successfully initialized project output](https://i.imgur.com/K7FIMMK.png)
 
-Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
+Then you can start exploring the project from either http://localhost:8000/api/ or http://127.0.0.1:8000/api/. Happy coding!
 
 > You can access to the documentation of the project from this URLs (http://localhost:8000/swagger-docs/ or http://127.0.0.1:8000/swagger-docs/) to see all available endpoints.
 
@@ -159,7 +161,7 @@ $ python3 manage.py runserver
 
 ![Virtualenv success output](https://i.imgur.com/k3zGPJ3.png)
 
-Then you can start exploring the project from either http://localhost:8000/ or http://127.0.0.1:8000/. Happy coding!
+Then you can start exploring the project from either http://localhost:8000/api/ or http://127.0.0.1:8000/api/. Happy coding!
 
 > You can access to the documentation of the project from this URLs (http://localhost:8000/swagger-docs/ or http://127.0.0.1:8000/swagger-docs/) to see all available endpoints.
 
