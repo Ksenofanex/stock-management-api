@@ -9,7 +9,7 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 - [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
 
-- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/materials/) 
+- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/) 
 
 
 ## Pages
