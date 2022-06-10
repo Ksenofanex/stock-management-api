@@ -50,6 +50,9 @@ class MaterialSerializer(serializers.ModelSerializer):
         source="measurement_type", read_only=True
     )
     currency_nested = CurrencySerializer(source="currency", read_only=True)
+    accountant_name = serializers.CharField(
+        source="accountant.username", read_only=True
+    )
 
     class Meta:
         model = Material
@@ -58,6 +61,7 @@ class MaterialSerializer(serializers.ModelSerializer):
             "url",
             "name",
             "sku",
+            "accountant_name",
             "measurement_value",
             "measurement_type",
             "measurement_type_nested",

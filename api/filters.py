@@ -12,6 +12,11 @@ class MaterialFilter(filters.FilterSet):
         field_name="sku",
         lookup_expr="icontains",
     )
+    accountant_name = filters.CharFilter(
+        field_name="accountant__username",
+        label="Accountant name contains",
+        lookup_expr="icontains",
+    )
     extra_notes = filters.CharFilter(
         field_name="extra_notes",
         lookup_expr="icontains",
@@ -54,6 +59,7 @@ class MaterialFilter(filters.FilterSet):
         fields = [
             "name",
             "sku",
+            "accountant_name",
             "extra_notes",
             "currency_code",
             "currency_name",
