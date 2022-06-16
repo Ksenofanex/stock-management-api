@@ -1,5 +1,9 @@
 # stock-management-api
 
+Although you can view this project on the site, it's no longer active or maintained. It's been archived for future references.
+
+***
+
 A simple Stock Management API that was built with Django Rest Framework. It has CRUD, schema, documents, API authentication and authorization features.
 
 # Live showcase
