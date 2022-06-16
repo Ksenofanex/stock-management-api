@@ -1,6 +1,6 @@
 # stock-management-api
 
-Although you can view this project on the site, it's no longer active or maintained. It's been archived for future references.
+**Although you can view this project on the site, it's no longer active or maintained. It's been archived for future references.**
 
 ***
 
