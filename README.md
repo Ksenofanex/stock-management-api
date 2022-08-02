@@ -97,7 +97,7 @@ With that single line of command, Docker will take care of everything.
 
 ![Docker Compose GIF](https://i.imgur.com/91tbxPS.gif)
 
-- After the building and initializing process, you must see this output:
+- After the building and initialization process, you must see this output:
 
 ![Docker successfully initialized project output](https://i.imgur.com/K7FIMMK.png)
 
@@ -161,7 +161,7 @@ $ python3 manage.py runserver
 
 </details>
 
-- After the initializing process, you must see this output:
+- After the initialization process, you must see this output:
 
 ![Virtualenv success output](https://i.imgur.com/k3zGPJ3.png)
 
