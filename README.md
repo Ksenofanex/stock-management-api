@@ -4,7 +4,7 @@
 
 ***
 
-A simple Stock Management API that was my very first project and built with Django Rest Framework. It has CRUD, schema, documents, API authentication and authorization features.
+A simple Stock Management API that was my very first project and built with Django Rest Framework. It has CRUD, schema, documents, API authentication and authorization features. Still, you can open an issue or a PR if you find a critical bug, I'll fix it ASAP.
 
 # Live showcase
 
