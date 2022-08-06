@@ -1,10 +1,10 @@
 # stock-management-api
 
-**Although you can view this project on the site, it's no longer active or maintained. It's been archived for future references.**
+**Although you can view this project on the site, it's no longer active or maintained. Still, you can open an issue or a PR if you find a critical bug, I'll fix it ASAP.**
 
 ***
 
-A simple Stock Management API that was my very first project and built with Django Rest Framework. It has CRUD, schema, documents, API authentication and authorization features. Still, you can open an issue or a PR if you find a critical bug, I'll fix it ASAP.
+A simple Stock Management API that was my very first project and built with Django Rest Framework. It has CRUD, schema, documents, API authentication and authorization features.
 
 # Live showcase
 
