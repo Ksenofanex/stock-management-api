@@ -13,13 +13,13 @@ from api.models import Material, Currency, MeasurementType, Supplier
 class ViewSetTests(StockManagementAPITestCase):
     def test_if_material_list_page_works(self):
         """Checks if material list page is accessible to all."""
-        response = self.get(url_name="material-list")
+        response = self.get(url_name="v1:material-list")
         assert response.status_code == status.HTTP_200_OK
 
     def test_if_material_detail_page_works(self):
         """Checks if material detail page is accessible to all."""
         material = MaterialFactory()
-        url = self.reverse("material-detail", pk=material.id)
+        url = self.reverse("v1:material-detail", pk=material.id)
 
         response = self.get(url_name=url)
         assert response.status_code == status.HTTP_200_OK
@@ -33,7 +33,7 @@ class ViewSetTests(StockManagementAPITestCase):
             "price": 999.00,
         }
 
-        response = self.post(url_name="material-list", data=material_data)
+        response = self.post(url_name="v1:material-list", data=material_data)
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
     def test_if_material_list_page_post_works(self):
@@ -57,7 +57,9 @@ class ViewSetTests(StockManagementAPITestCase):
         }
 
         with self.login(test_user):
-            response = self.post(url_name="material-list", data=material_data)
+            response = self.post(
+                url_name="v1:material-list", data=material_data
+            )
             assert response.status_code == status.HTTP_201_CREATED
 
         material = Material.objects.get(id=response.data.get("id"))
@@ -74,7 +76,7 @@ class ViewSetTests(StockManagementAPITestCase):
         can change Material."""
         unauthorized_user = self.make_user("unauthorized_user")
         material = MaterialFactory()
-        url = self.reverse("material-detail", pk=material.id)
+        url = self.reverse("v1:material-detail", pk=material.id)
         material_data = {
             "name": "Changed Material",
             "total_amount": 2.00,
@@ -91,7 +93,7 @@ class ViewSetTests(StockManagementAPITestCase):
         change Material."""
         authorized_user = self.make_user("authorized_user")
         material = MaterialFactory(accountant=authorized_user)
-        url = self.reverse("material-detail", pk=material.id)
+        url = self.reverse("v1:material-detail", pk=material.id)
         material_data = {
             "name": "Changed Material",
             "sku": "TST-SKU-CHNGD-01",
@@ -118,7 +120,7 @@ class ViewSetTests(StockManagementAPITestCase):
         can delete Material."""
         unauthorized_user = self.make_user("unauthorized_user")
         material = MaterialFactory()
-        url = self.reverse("material-detail", pk=material.id)
+        url = self.reverse("v1:material-detail", pk=material.id)
 
         with self.login(unauthorized_user):
             response = self.delete(url_name=url)
@@ -129,7 +131,7 @@ class ViewSetTests(StockManagementAPITestCase):
         delete Material."""
         authorized_user = self.make_user("authorized_user")
         material = MaterialFactory(accountant=authorized_user)
-        url = self.reverse("material-detail", pk=material.id)
+        url = self.reverse("v1:material-detail", pk=material.id)
 
         with self.login(authorized_user):
             response = self.delete(url_name=url)
@@ -139,13 +141,13 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_if_currency_list_page_works(self):
         """Checks if currency list page is accessible to all."""
-        response = self.get(url_name="currency-list")
+        response = self.get(url_name="v1:currency-list")
         assert response.status_code == status.HTTP_200_OK
 
     def test_if_currency_detail_page_works(self):
         """Checks if currency detail page is accessible to all."""
         currency = CurrencyFactory()
-        url = self.reverse("currency-detail", pk=currency.id)
+        url = self.reverse("v1:currency-detail", pk=currency.id)
 
         response = self.get(url_name=url)
         assert response.status_code == status.HTTP_200_OK
@@ -157,7 +159,7 @@ class ViewSetTests(StockManagementAPITestCase):
             "name": "Zimbabwean Dollar",
         }
 
-        response = self.post(url_name="currency-list", data=currency_data)
+        response = self.post(url_name="v1:currency-list", data=currency_data)
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
     def test_if_currency_list_page_post_works(self):
@@ -169,7 +171,9 @@ class ViewSetTests(StockManagementAPITestCase):
         }
 
         with self.login(test_user):
-            response = self.post(url_name="currency-list", data=currency_data)
+            response = self.post(
+                url_name="v1:currency-list", data=currency_data
+            )
             assert response.status_code == status.HTTP_201_CREATED
 
         currency = Currency.objects.get(id=response.data.get("id"))
@@ -180,7 +184,7 @@ class ViewSetTests(StockManagementAPITestCase):
         """Checks if any authenticated user is allowed to change Currency."""
         authenticated_user = self.make_user("authenticated_user")
         currency = CurrencyFactory()
-        url = self.reverse("currency-detail", pk=currency.id)
+        url = self.reverse("v1:currency-detail", pk=currency.id)
         currency_data = {
             "code": "USDT",
             "name": "Tether",
@@ -194,7 +198,7 @@ class ViewSetTests(StockManagementAPITestCase):
         """Checks if any authenticated user is allowed to delete Currency."""
         authenticated_user = self.make_user("authenticated_user")
         currency = CurrencyFactory()
-        url = self.reverse("currency-detail", pk=currency.id)
+        url = self.reverse("v1:currency-detail", pk=currency.id)
 
         with self.login(authenticated_user):
             response = self.delete(url_name=url)
@@ -202,13 +206,15 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_if_measurement_type_list_page_works(self):
         """Checks if measurement type list page is accessible to all."""
-        response = self.get(url_name="measurement-type-list")
+        response = self.get(url_name="v1:measurement-type-list")
         assert response.status_code == status.HTTP_200_OK
 
     def test_if_measurement_type_detail_page_works(self):
         """Checks if measurement type detail page is accessible to all."""
         measurement_type = MeasurementTypeFactory()
-        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
+        url = self.reverse(
+            "v1:measurement-type-detail", pk=measurement_type.id
+        )
 
         response = self.get(url_name=url)
         assert response.status_code == status.HTTP_200_OK
@@ -221,7 +227,7 @@ class ViewSetTests(StockManagementAPITestCase):
         }
 
         response = self.post(
-            url_name="measurement-type-list", data=measurement_type_data
+            url_name="v1:measurement-type-list", data=measurement_type_data
         )
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
@@ -235,7 +241,7 @@ class ViewSetTests(StockManagementAPITestCase):
 
         with self.login(test_user):
             response = self.post(
-                url_name="measurement-type-list", data=measurement_type_data
+                url_name="v1:measurement-type-list", data=measurement_type_data
             )
             assert response.status_code == status.HTTP_201_CREATED
 
@@ -250,7 +256,9 @@ class ViewSetTests(StockManagementAPITestCase):
         MeasurementType."""
         authenticated_user = self.make_user("authenticated_user")
         measurement_type = MeasurementTypeFactory()
-        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
+        url = self.reverse(
+            "v1:measurement-type-detail", pk=measurement_type.id
+        )
         measurement_type_data = {
             "code": "L",
             "name": "Liter",
@@ -265,7 +273,9 @@ class ViewSetTests(StockManagementAPITestCase):
         MeasurementType."""
         authenticated_user = self.make_user("authenticated_user")
         measurement_type = MeasurementTypeFactory()
-        url = self.reverse("measurement-type-detail", pk=measurement_type.id)
+        url = self.reverse(
+            "v1:measurement-type-detail", pk=measurement_type.id
+        )
 
         with self.login(authenticated_user):
             response = self.delete(url_name=url)
@@ -273,13 +283,13 @@ class ViewSetTests(StockManagementAPITestCase):
 
     def test_if_supplier_list_page_works(self):
         """Checks if supplier list page is accessible to all."""
-        response = self.get(url_name="supplier-list")
+        response = self.get(url_name="v1:supplier-list")
         assert response.status_code == status.HTTP_200_OK
 
     def test_if_supplier_detail_page_works(self):
         """Checks if supplier detail page is accessible to all."""
         supplier = SupplierFactory()
-        url = self.reverse("supplier-detail", pk=supplier.id)
+        url = self.reverse("v1:supplier-detail", pk=supplier.id)
 
         response = self.get(url_name=url)
         assert response.status_code == status.HTTP_200_OK
@@ -293,7 +303,7 @@ class ViewSetTests(StockManagementAPITestCase):
             "address": "Skyscraper, Center Of Evil",
         }
 
-        response = self.post(url_name="supplier-list", data=supplier_data)
+        response = self.post(url_name="v1:supplier-list", data=supplier_data)
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
     def test_if_supplier_list_page_post_works(self):
@@ -307,7 +317,9 @@ class ViewSetTests(StockManagementAPITestCase):
         }
 
         with self.login(test_user):
-            response = self.post(url_name="supplier-list", data=supplier_data)
+            response = self.post(
+                url_name="v1:supplier-list", data=supplier_data
+            )
             assert response.status_code == status.HTTP_201_CREATED
 
         supplier = Supplier.objects.get(id=response.data.get("id"))
@@ -320,7 +332,7 @@ class ViewSetTests(StockManagementAPITestCase):
         """Checks if any authenticated user is allowed to change Supplier."""
         authenticated_user = self.make_user("authenticated_user")
         supplier = SupplierFactory()
-        url = self.reverse("supplier-detail", pk=supplier.id)
+        url = self.reverse("v1:supplier-detail", pk=supplier.id)
         supplier_data = {
             "name": "Wayne Enterprise",
             "phone": "+905051111111",
@@ -336,7 +348,7 @@ class ViewSetTests(StockManagementAPITestCase):
         """Checks if any authenticated user is allowed to delete Supplier."""
         authenticated_user = self.make_user("authenticated_user")
         supplier = SupplierFactory()
-        url = self.reverse("supplier-detail", pk=supplier.id)
+        url = self.reverse("v1:supplier-detail", pk=supplier.id)
 
         with self.login(authenticated_user):
             response = self.delete(url_name=url)
