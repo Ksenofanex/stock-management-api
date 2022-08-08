@@ -112,7 +112,7 @@ You prefer the traditional way, ha? Oki doki, no judgements.
 
 ```bash
 > pwd
-/stock-management-api
+\stock-management-api
 
 > pip install virtualenv
 
