@@ -11,7 +11,13 @@ class CurrencySerializer(serializers.ModelSerializer):
             "url",
             "code",
             "name",
+            "created_at",
+            "updated_at",
         )
+        extra_kwargs = {
+            "created_at": {"read_only": True},
+            "updated_at": {"read_only": True},
+        }
 
 
 class MeasurementTypeSerializer(serializers.ModelSerializer):
@@ -22,12 +28,16 @@ class MeasurementTypeSerializer(serializers.ModelSerializer):
             "url",
             "code",
             "name",
+            "created_at",
+            "updated_at",
         )
         extra_kwargs = {
             "url": {
                 "view_name": "measurement-type-detail",
                 "lookup_field": "pk",
-            }
+            },
+            "created_at": {"read_only": True},
+            "updated_at": {"read_only": True},
         }
 
 
@@ -41,7 +51,13 @@ class SupplierSerializer(serializers.ModelSerializer):
             "phone",
             "email",
             "address",
+            "created_at",
+            "updated_at",
         )
+        extra_kwargs = {
+            "created_at": {"read_only": True},
+            "updated_at": {"read_only": True},
+        }
 
 
 class MaterialSerializer(serializers.ModelSerializer):
@@ -54,6 +70,21 @@ class MaterialSerializer(serializers.ModelSerializer):
         source="accountant.username", read_only=True
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Filtering the objects in the API's Post page's HTML form.
+        # If an object isn't approved, it won't be shown in the HTML form of
+        # API's Post page.
+        self.fields["supplier"].queryset = Supplier.objects.filter(
+            is_approved=True
+        )
+        self.fields[
+            "measurement_type"
+        ].queryset = MeasurementType.objects.filter(is_approved=True)
+        self.fields["currency"].queryset = Currency.objects.filter(
+            is_approved=True
+        )
+
     class Meta:
         model = Material
         fields = (
@@ -61,6 +92,8 @@ class MaterialSerializer(serializers.ModelSerializer):
             "url",
             "name",
             "sku",
+            "created_at",
+            "updated_at",
             "accountant_name",
             "measurement_value",
             "measurement_type",
@@ -70,11 +103,13 @@ class MaterialSerializer(serializers.ModelSerializer):
             "extra_notes",
             "currency",
             "currency_nested",
-            "created_date",
-            "updated_date",
             "supplier",
             "supplier_nested",
         )
+        extra_kwargs = {
+            "created_at": {"read_only": True},
+            "updated_at": {"read_only": True},
+        }
 
     def create(self, validated_data):
         # For setting the accountant field currently logged-in user.

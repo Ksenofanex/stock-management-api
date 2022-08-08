@@ -28,7 +28,7 @@ class MaterialViewSet(viewsets.ModelViewSet):
         "supplier",
         "measurement_type",
         "currency",
-    )
+    ).filter(is_approved=True)
     serializer_class = MaterialSerializer
     permission_classes = (
         IsAuthenticatedOrReadOnly,
@@ -39,7 +39,7 @@ class MaterialViewSet(viewsets.ModelViewSet):
 
 
 class CurrencyViewSet(viewsets.ModelViewSet):
-    queryset = Currency.objects.all()
+    queryset = Currency.objects.filter(is_approved=True)
     serializer_class = CurrencySerializer
     filterset_class = CurrencyFilter
     http_method_names = [
@@ -49,7 +49,7 @@ class CurrencyViewSet(viewsets.ModelViewSet):
 
 
 class MeasurementTypeViewSet(viewsets.ModelViewSet):
-    queryset = MeasurementType.objects.all()
+    queryset = MeasurementType.objects.filter(is_approved=True)
     serializer_class = MeasurementTypeSerializer
     filterset_class = MeasurementTypeFilter
     http_method_names = [
@@ -59,7 +59,7 @@ class MeasurementTypeViewSet(viewsets.ModelViewSet):
 
 
 class SupplierViewSet(viewsets.ModelViewSet):
-    queryset = Supplier.objects.all()
+    queryset = Supplier.objects.filter(is_approved=True)
     serializer_class = SupplierSerializer
     filterset_class = SupplierFilter
     http_method_names = [

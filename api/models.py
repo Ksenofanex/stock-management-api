@@ -4,7 +4,24 @@ from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class Material(models.Model):
+class BaseAbstractModel(models.Model):
+    is_approved = models.BooleanField(
+        verbose_name="is approved?", default=False
+    )  # Must be approved via admin to be visible in API.
+
+    # Date fields.
+    created_at = models.DateTimeField(
+        verbose_name="created date", auto_now_add=True
+    )
+    updated_at = models.DateTimeField(
+        verbose_name="updated date", auto_now=True, blank=True
+    )
+
+    class Meta:
+        abstract = True
+
+
+class Material(BaseAbstractModel):
     # Core fields
     name = models.CharField(verbose_name="material name", max_length=25)
     sku = models.CharField(
@@ -33,9 +50,9 @@ class Material(models.Model):
     )
     extra_notes = models.TextField(verbose_name="extra notes", blank=True)
 
-    # ForeignKey Relations
+    # ForeignKey relations.
     accountant = models.ForeignKey(
-        User,
+        to=User,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -67,14 +84,6 @@ class Material(models.Model):
         related_query_name="material",
     )
 
-    # Date fields
-    created_date = models.DateTimeField(
-        verbose_name="created date", auto_now_add=True
-    )
-    updated_date = models.DateTimeField(
-        verbose_name="updated date", auto_now=True, blank=True
-    )
-
     class Meta:
         verbose_name = "Material"
         verbose_name_plural = "Materials"
@@ -83,7 +92,7 @@ class Material(models.Model):
         return self.name
 
 
-class Currency(models.Model):
+class Currency(BaseAbstractModel):
     code = models.CharField(
         verbose_name="code",
         max_length=3,
@@ -105,7 +114,7 @@ class Currency(models.Model):
         return self.code
 
 
-class MeasurementType(models.Model):
+class MeasurementType(BaseAbstractModel):
     code = models.CharField(
         verbose_name="code",
         max_length=5,
@@ -127,7 +136,7 @@ class MeasurementType(models.Model):
         return self.code
 
 
-class Supplier(models.Model):
+class Supplier(BaseAbstractModel):
     name = models.CharField(verbose_name="name", max_length=30)
     phone = PhoneNumberField(
         verbose_name="phone",

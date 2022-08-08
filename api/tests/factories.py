@@ -21,6 +21,7 @@ class CurrencyFactory(factory.django.DjangoModelFactory):
 
     code = factory.Faker("currency_code")
     name = factory.Faker("currency_name")
+    is_approved = True
 
 
 class MeasurementTypeFactory(factory.django.DjangoModelFactory):
@@ -29,6 +30,7 @@ class MeasurementTypeFactory(factory.django.DjangoModelFactory):
 
     code = "KG"
     name = "Kilogram"
+    is_approved = True
 
 
 class SupplierFactory(factory.django.DjangoModelFactory):
@@ -39,6 +41,7 @@ class SupplierFactory(factory.django.DjangoModelFactory):
     phone = factory.Faker("phone_number")
     email = factory.Faker("email")
     address = factory.Faker("address")
+    is_approved = True
 
 
 class MaterialFactory(factory.django.DjangoModelFactory):
@@ -71,6 +74,7 @@ class MaterialFactory(factory.django.DjangoModelFactory):
         max_value=100,
         positive=True,
     )
+    is_approved = True
 
     # ForeignKeys
     accountant = factory.SubFactory(UserFactory)
