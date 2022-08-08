@@ -10,9 +10,9 @@ A simple Stock Management API that was my very first project and built with Djan
 
 ## Registration & Authentication
 
-- [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
+- [API Registration](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
 
-- [API Login Page](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/) 
+- [API Login](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/) 
 
 
 ## Pages
