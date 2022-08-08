@@ -8,8 +8,7 @@ A simple Stock Management API that was my very first project and built with Djan
 
 # Live showcase
 
-## Authentication
-
+## Registration & Authentication
 
 - [API Registration Page](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
 
@@ -19,24 +18,19 @@ A simple Stock Management API that was my very first project and built with Djan
 ## Pages
 
 
-- [Main Page](https://stockmanagementksenofanex.herokuapp.com/api/)
+- [API Root](https://stockmanagementksenofanex.herokuapp.com/api/)
 
-- [Materials Page](https://stockmanagementksenofanex.herokuapp.com/api/materials/)
+- [Materials](https://stockmanagementksenofanex.herokuapp.com/api/materials/)
 
-- [Suppliers Page](https://stockmanagementksenofanex.herokuapp.com/api/suppliers/)
+- [Suppliers](https://stockmanagementksenofanex.herokuapp.com/api/suppliers/)
 
-- [Currencies Page](https://stockmanagementksenofanex.herokuapp.com/api/currencies/)
+- [Currencies](https://stockmanagementksenofanex.herokuapp.com/api/currencies/)
 
-- [Measurement Types Page](https://stockmanagementksenofanex.herokuapp.com/api/measurement-types/) 
+- [Measurement Types](https://stockmanagementksenofanex.herokuapp.com/api/measurement-types/) 
 
+## Documentation
 
-## Docs
-
-
-- [Swagger-Documents Page](https://stockmanagementksenofanex.herokuapp.com/swagger-docs/)
-
-- [Documents Page](https://stockmanagementksenofanex.herokuapp.com/docs/)
-
+- [Swagger Documents](https://stockmanagementksenofanex.herokuapp.com/swagger-docs/)
 
 # Installation
 
@@ -102,6 +96,8 @@ With that single line of command, Docker will take care of everything.
 ![Docker successfully initialized project output](https://i.imgur.com/K7FIMMK.png)
 
 Then you can start exploring the project from either http://localhost:8000/api/ or http://127.0.0.1:8000/api/. Happy coding!
+
+> Remember, you must approve the created objects from the admin panel in order them to be visible in the API.
 
 > You can access to the documentation of the project from this URLs (http://localhost:8000/swagger-docs/ or http://127.0.0.1:8000/swagger-docs/) to see all available endpoints.
 
