@@ -163,6 +163,8 @@ $ python3 manage.py runserver
 
 Then you can start exploring the project from either http://localhost:8000/api/ or http://127.0.0.1:8000/api/. Happy coding!
 
+> Remember, you must approve the created objects from the admin panel in order them to be visible in the API.
+
 > You can access to the documentation of the project from this URLs (http://localhost:8000/swagger-docs/ or http://127.0.0.1:8000/swagger-docs/) to see all available endpoints.
 
 [^1]: https://www.docker.com/products/docker-desktop

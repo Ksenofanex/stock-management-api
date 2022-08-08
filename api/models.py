@@ -22,7 +22,6 @@ class BaseAbstractModel(models.Model):
 
 
 class Material(BaseAbstractModel):
-    # Core fields
     name = models.CharField(verbose_name="material name", max_length=25)
     sku = models.CharField(
         verbose_name="stock keeping unit",
