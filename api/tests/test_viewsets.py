@@ -1,5 +1,3 @@
-from rest_framework import status
-
 from api.test import StockManagementAPITestCase
 from api.tests.factories import (
     CurrencyFactory,
@@ -154,7 +152,7 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
         currency = CurrencyFactory()
 
         response = self.get(url_name="v1:currency-detail", pk=currency.id)
-        assert response.status_code == status.HTTP_200_OK
+        self.assert_http_200_ok(response=response)
 
     def test_currency_list_page_post_permission(self):
         """Checks if unauthenticated user is able to create Currency."""
