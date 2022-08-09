@@ -10,7 +10,7 @@ from api.tests.factories import (
 from api.models import Material, Currency, MeasurementType, Supplier
 
 
-class ViewSetTests(StockManagementAPITestCase):
+class MaterialViewSetTests(StockManagementAPITestCase):
     def test_if_material_list_page_works(self):
         """Checks if material list page is accessible to all."""
         response = self.get(url_name="v1:material-list")
@@ -139,6 +139,8 @@ class ViewSetTests(StockManagementAPITestCase):
 
         assert Material.objects.count() == 0
 
+
+class CurrencyViewSetTests(StockManagementAPITestCase):
     def test_if_currency_list_page_works(self):
         """Checks if currency list page is accessible to all."""
         response = self.get(url_name="v1:currency-list")
@@ -204,6 +206,8 @@ class ViewSetTests(StockManagementAPITestCase):
             response = self.delete(url_name=url)
             assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
 
+
+class MeasurementTypeViewSetTests(StockManagementAPITestCase):
     def test_if_measurement_type_list_page_works(self):
         """Checks if measurement type list page is accessible to all."""
         response = self.get(url_name="v1:measurement-type-list")
@@ -281,6 +285,8 @@ class ViewSetTests(StockManagementAPITestCase):
             response = self.delete(url_name=url)
             assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
 
+
+class SupplierViewSetTests(StockManagementAPITestCase):
     def test_if_supplier_list_page_works(self):
         """Checks if supplier list page is accessible to all."""
         response = self.get(url_name="v1:supplier-list")
