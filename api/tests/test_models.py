@@ -34,7 +34,7 @@ class ModelTests(StockManagementAPITestCase):
             supplier=cls.supplier,
         )
 
-    def test_if_material_is_created(self):
+    def test_material_is_created(self):
         assert self.material.name == "Tesla Model 3"
         assert self.material.sku == "STD-MDL3-TSLA-BLCK-01"
         assert self.material.total_amount == 1.00
@@ -42,15 +42,15 @@ class ModelTests(StockManagementAPITestCase):
         assert self.material.price == 50000.00
         assert self.material.accountant.username == "test_user_1"
 
-    def test_if_currency_is_created(self):
+    def test_currency_is_created(self):
         assert self.currency.code == "USD"
         assert self.currency.name == "United States Dollar"
 
-    def test_if_measurement_type_is_created(self):
+    def test_measurement_type_is_created(self):
         assert self.measurement_type.code == "KG"
         assert self.measurement_type.name == "Kilogram"
 
-    def test_if_supplier_is_created_(self):
+    def test_supplier_is_created_(self):
         assert self.supplier.name == "Tesla"
         assert self.supplier.phone == "15051111111"
         assert self.supplier.email == "tesla@tesla.com"

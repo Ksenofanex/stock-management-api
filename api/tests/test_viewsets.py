@@ -9,17 +9,17 @@ from api.models import Material, Currency, MeasurementType, Supplier
 
 
 class MaterialViewSetTests(StockManagementAPITestCase):
-    def test_if_material_list_page_works(self):
+    def test_material_list_page(self):
         """Checks if material list page is accessible to all."""
         self.get_check_200(url="v1:material-list")
 
-    def test_if_material_detail_page_works(self):
+    def test_material_detail_page(self):
         """Checks if material detail page is accessible to all."""
         material = MaterialFactory()
 
         self.get_check_200(url="v1:material-detail", pk=material.id)
 
-    def test_material_list_page_post_permission(self):
+    def test_unauthenticated_user_can_create(self):
         """Checks if unauthenticated user is able to create Material."""
         material_data = {
             "name": "Test Material 1",
@@ -31,7 +31,7 @@ class MaterialViewSetTests(StockManagementAPITestCase):
         response = self.post(url_name="v1:material-list", data=material_data)
         self.assert_http_403_forbidden(response=response)
 
-    def test_if_material_list_page_post_works(self):
+    def test_authenticated_user_can_create(self):
         """Checks if authenticated user is able to create Material."""
         test_user = self.make_user(username="test1")
         currency, measurement_type, supplier = (
@@ -66,7 +66,7 @@ class MaterialViewSetTests(StockManagementAPITestCase):
         assert material.price == material_data.get("price")
         assert material.accountant == test_user
 
-    def test_if_unauthorized_user_can_change_material(self):
+    def test_unauthorized_user_can_change(self):
         """Checks if unauthorized user (i.e., user that doesn't own material)
         can change Material."""
         unauthorized_user = self.make_user(username="unauthorized_user")
@@ -86,7 +86,7 @@ class MaterialViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_403_forbidden(response=response)
 
-    def test_if_authorized_user_can_change_material(self):
+    def test_authorized_user_can_change(self):
         """Checks if authorized user (i.e., user that owns material) can
         change Material."""
         authorized_user = self.make_user(username="authorized_user")
@@ -116,7 +116,7 @@ class MaterialViewSetTests(StockManagementAPITestCase):
         assert material.price == material_data.get("price")
         assert material.accountant == authorized_user
 
-    def test_if_unauthorized_user_can_delete_material(self):
+    def test_unauthorized_user_can_delete(self):
         """Checks if unauthorized user (i.e., user that doesn't own material)
         can delete Material."""
         unauthorized_user = self.make_user(username="unauthorized_user")
@@ -127,7 +127,7 @@ class MaterialViewSetTests(StockManagementAPITestCase):
             response = self.delete(url_name=url)
             self.assert_http_403_forbidden(response=response)
 
-    def test_if_authorized_user_can_delete_material(self):
+    def test_authorized_user_can_delete(self):
         """Checks if authorized user (i.e., user that owns material) can
         delete Material."""
         authorized_user = self.make_user(username="authorized_user")
@@ -143,18 +143,18 @@ class MaterialViewSetTests(StockManagementAPITestCase):
 
 
 class CurrencyViewSetTests(StockManagementAPITestCase):
-    def test_if_currency_list_page_works(self):
+    def test_currency_list_page(self):
         """Checks if currency list page is accessible to all."""
         self.get_check_200(url="v1:currency-list")
 
-    def test_if_currency_detail_page_works(self):
+    def test_currency_detail_page(self):
         """Checks if currency detail page is accessible to all."""
         currency = CurrencyFactory()
 
         response = self.get(url_name="v1:currency-detail", pk=currency.id)
         self.assert_http_200_ok(response=response)
 
-    def test_currency_list_page_post_permission(self):
+    def test_unauthenticated_user_can_create(self):
         """Checks if unauthenticated user is able to create Currency."""
         currency_data = {
             "code": "ZWL",
@@ -164,7 +164,7 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
         response = self.post(url_name="v1:currency-list", data=currency_data)
         self.assert_http_403_forbidden(response=response)
 
-    def test_if_currency_list_page_post_works(self):
+    def test_authenticated_user_can_create(self):
         """Checks if authenticated user is able to create Currency."""
         test_user = self.make_user(username="test1")
         currency_data = {
@@ -182,7 +182,7 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
         assert currency.code == currency_data.get("code")
         assert currency.name == currency_data.get("name")
 
-    def test_if_currency_is_changeable(self):
+    def test_authenticated_user_can_change(self):
         """Checks if any authenticated user is allowed to change Currency."""
         authenticated_user = self.make_user(username="authenticated_user")
         currency = CurrencyFactory()
@@ -199,7 +199,7 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_405_method_not_allowed(response=response)
 
-    def test_if_currency_is_deletable(self):
+    def test_authenticated_user_can_delete(self):
         """Checks if any authenticated user is allowed to delete Currency."""
         authenticated_user = self.make_user(username="authenticated_user")
         currency = CurrencyFactory()
@@ -212,11 +212,11 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
 
 
 class MeasurementTypeViewSetTests(StockManagementAPITestCase):
-    def test_if_measurement_type_list_page_works(self):
+    def test_measurement_type_list_page(self):
         """Checks if measurement type list page is accessible to all."""
         self.get_check_200(url="v1:measurement-type-list")
 
-    def test_if_measurement_type_detail_page_works(self):
+    def test_measurement_type_detail_page(self):
         """Checks if measurement type detail page is accessible to all."""
         measurement_type = MeasurementTypeFactory()
 
@@ -225,7 +225,7 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
         )
         self.assert_http_200_ok(response=response)
 
-    def test_measurement_type_list_page_post_permission(self):
+    def test_unauthenticated_user_can_create(self):
         """Checks if unauthenticated user is able to create MeasurementType."""
         measurement_type_data = {
             "code": "KG",
@@ -237,7 +237,7 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
         )
         self.assert_http_403_forbidden(response=response)
 
-    def test_if_measurement_type_list_page_post_works(self):
+    def test_authenticated_user_can_create(self):
         """Checks if authenticated user is able to create MeasurementType."""
         test_user = self.make_user(username="test1")
         measurement_type_data = {
@@ -257,7 +257,7 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
         assert measurement_type.code == measurement_type_data.get("code")
         assert measurement_type.name == measurement_type_data.get("name")
 
-    def test_if_measurement_type_is_changeable(self):
+    def test_authenticated_user_can_change(self):
         """Checks if any authenticated user is allowed to change
         MeasurementType."""
         authenticated_user = self.make_user(username="authenticated_user")
@@ -275,7 +275,7 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_405_method_not_allowed(response=response)
 
-    def test_if_measurement_type_is_deletable(self):
+    def test_authenticated_user_can_delete(self):
         """Checks if any authenticated user is allowed to delete
         MeasurementType."""
         authenticated_user = self.make_user("authenticated_user")
@@ -289,18 +289,18 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
 
 
 class SupplierViewSetTests(StockManagementAPITestCase):
-    def test_if_supplier_list_page_works(self):
+    def test_supplier_list_page(self):
         """Checks if supplier list page is accessible to all."""
         self.get_check_200(url="v1:supplier-list")
 
-    def test_if_supplier_detail_page_works(self):
+    def test_supplier_detail_page(self):
         """Checks if supplier detail page is accessible to all."""
         supplier = SupplierFactory()
 
         response = self.get(url_name="v1:supplier-detail", pk=supplier.id)
         self.assert_http_200_ok(response=response)
 
-    def test_supplier_list_page_post_permission(self):
+    def test_unauthenticated_user_can_create(self):
         """Checks if unauthenticated user is able to create Supplier."""
         supplier_data = {
             "name": "Vought International",
@@ -312,7 +312,7 @@ class SupplierViewSetTests(StockManagementAPITestCase):
         response = self.post(url_name="v1:supplier-list", data=supplier_data)
         self.assert_http_403_forbidden(response=response)
 
-    def test_if_supplier_list_page_post_works(self):
+    def test_authenticated_user_can_create(self):
         """Checks if authenticated user is able to create Supplier."""
         test_user = self.make_user(username="test1")
         supplier_data = {
@@ -334,7 +334,7 @@ class SupplierViewSetTests(StockManagementAPITestCase):
         assert supplier.email == supplier_data.get("email")
         assert supplier.address == supplier_data.get("address")
 
-    def test_if_supplier_is_changeable(self):
+    def test_authenticated_user_can_change(self):
         """Checks if any authenticated user is allowed to change Supplier."""
         authenticated_user = self.make_user(username="authenticated_user")
         supplier = SupplierFactory()
@@ -353,7 +353,7 @@ class SupplierViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_405_method_not_allowed(response=response)
 
-    def test_if_supplier_is_deletable(self):
+    def test_authenticated_user_can_delete(self):
         """Checks if any authenticated user is allowed to delete Supplier."""
         authenticated_user = self.make_user(username="authenticated_user")
         supplier = SupplierFactory()
