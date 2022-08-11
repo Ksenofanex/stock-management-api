@@ -9,12 +9,12 @@ from api.models import Material, Currency, MeasurementType, Supplier
 
 
 class MaterialViewSetTests(StockManagementAPITestCase):
-    def test_material_list_page(self):
-        """Checks if material list page is accessible to all."""
+    def test_list_page(self):
+        """Checks if Material list page is accessible to all."""
         self.get_check_200(url="v1:material-list")
 
-    def test_material_detail_page(self):
-        """Checks if material detail page is accessible to all."""
+    def test_detail_page(self):
+        """Checks if Material detail page is accessible to all."""
         material = MaterialFactory()
 
         self.get_check_200(url="v1:material-detail", pk=material.id)
@@ -143,12 +143,12 @@ class MaterialViewSetTests(StockManagementAPITestCase):
 
 
 class CurrencyViewSetTests(StockManagementAPITestCase):
-    def test_currency_list_page(self):
-        """Checks if currency list page is accessible to all."""
+    def test_list_page(self):
+        """Checks if Currency list page is accessible to all."""
         self.get_check_200(url="v1:currency-list")
 
-    def test_currency_detail_page(self):
-        """Checks if currency detail page is accessible to all."""
+    def test_detail_page(self):
+        """Checks if Currency detail page is accessible to all."""
         currency = CurrencyFactory()
 
         response = self.get(url_name="v1:currency-detail", pk=currency.id)
@@ -212,12 +212,12 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
 
 
 class MeasurementTypeViewSetTests(StockManagementAPITestCase):
-    def test_measurement_type_list_page(self):
-        """Checks if measurement type list page is accessible to all."""
+    def test_list_page(self):
+        """Checks if Measurement Type list page is accessible to all."""
         self.get_check_200(url="v1:measurement-type-list")
 
-    def test_measurement_type_detail_page(self):
-        """Checks if measurement type detail page is accessible to all."""
+    def test_detail_page(self):
+        """Checks if Measurement Type detail page is accessible to all."""
         measurement_type = MeasurementTypeFactory()
 
         response = self.get(
@@ -226,7 +226,8 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
         self.assert_http_200_ok(response=response)
 
     def test_unauthenticated_user_can_create(self):
-        """Checks if unauthenticated user is able to create MeasurementType."""
+        """Checks if unauthenticated user is able to create Measurement
+        Type."""
         measurement_type_data = {
             "code": "KG",
             "name": "Kilogram",
@@ -238,7 +239,8 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
         self.assert_http_403_forbidden(response=response)
 
     def test_authenticated_user_can_create(self):
-        """Checks if authenticated user is able to create MeasurementType."""
+        """Checks if authenticated user is able to create Measurement
+        Type."""
         test_user = self.make_user(username="test1")
         measurement_type_data = {
             "code": "LB",
@@ -259,7 +261,7 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
 
     def test_authenticated_user_can_change(self):
         """Checks if any authenticated user is allowed to change
-        MeasurementType."""
+        Measurement Type."""
         authenticated_user = self.make_user(username="authenticated_user")
         measurement_type = MeasurementTypeFactory()
         measurement_type_data = {
@@ -277,7 +279,7 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
 
     def test_authenticated_user_can_delete(self):
         """Checks if any authenticated user is allowed to delete
-        MeasurementType."""
+        Measurement Type."""
         authenticated_user = self.make_user("authenticated_user")
         measurement_type = MeasurementTypeFactory()
 
@@ -289,11 +291,11 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
 
 
 class SupplierViewSetTests(StockManagementAPITestCase):
-    def test_supplier_list_page(self):
-        """Checks if supplier list page is accessible to all."""
+    def test_list_page(self):
+        """Checks if Supplier list page is accessible to all."""
         self.get_check_200(url="v1:supplier-list")
 
-    def test_supplier_detail_page(self):
+    def test_detail_page(self):
         """Checks if supplier detail page is accessible to all."""
         supplier = SupplierFactory()
 
