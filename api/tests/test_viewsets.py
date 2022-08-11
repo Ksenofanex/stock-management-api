@@ -67,7 +67,7 @@ class MaterialViewSetTests(StockManagementAPITestCase):
         assert material.accountant == test_user
 
     def test_unauthorized_user_can_change(self):
-        """Checks if unauthorized user (i.e., user that doesn't own material)
+        """Checks if unauthorized user (i.e., user that doesn't own Material)
         can change Material."""
         unauthorized_user = self.make_user(username="unauthorized_user")
         material = MaterialFactory()
@@ -87,7 +87,7 @@ class MaterialViewSetTests(StockManagementAPITestCase):
             self.assert_http_403_forbidden(response=response)
 
     def test_authorized_user_can_change(self):
-        """Checks if authorized user (i.e., user that owns material) can
+        """Checks if authorized user (i.e., user that owns Material) can
         change Material."""
         authorized_user = self.make_user(username="authorized_user")
         material = MaterialFactory(accountant=authorized_user)
@@ -117,18 +117,19 @@ class MaterialViewSetTests(StockManagementAPITestCase):
         assert material.accountant == authorized_user
 
     def test_unauthorized_user_can_delete(self):
-        """Checks if unauthorized user (i.e., user that doesn't own material)
+        """Checks if unauthorized user (i.e., user that doesn't own Material)
         can delete Material."""
         unauthorized_user = self.make_user(username="unauthorized_user")
         material = MaterialFactory()
-        url = self.reverse("v1:material-detail", pk=material.id)
 
         with self.login(unauthorized_user):
-            response = self.delete(url_name=url)
+            response = self.delete(
+                url_name="v1:material-detail", pk=material.id
+            )
             self.assert_http_403_forbidden(response=response)
 
     def test_authorized_user_can_delete(self):
-        """Checks if authorized user (i.e., user that owns material) can
+        """Checks if authorized user (i.e., user that owns Material) can
         delete Material."""
         authorized_user = self.make_user(username="authorized_user")
         material = MaterialFactory(accountant=authorized_user)
@@ -296,7 +297,7 @@ class SupplierViewSetTests(StockManagementAPITestCase):
         self.get_check_200(url="v1:supplier-list")
 
     def test_detail_page(self):
-        """Checks if supplier detail page is accessible to all."""
+        """Checks if Supplier detail page is accessible to all."""
         supplier = SupplierFactory()
 
         response = self.get(url_name="v1:supplier-detail", pk=supplier.id)
