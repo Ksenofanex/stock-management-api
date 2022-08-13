@@ -11,6 +11,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
+    username = factory.Faker("user_name")
     first_name = factory.Faker("first_name")
     last_name = factory.Faker("last_name")
 
@@ -18,6 +19,10 @@ class UserFactory(factory.django.DjangoModelFactory):
 class CurrencyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Currency
+        django_get_or_create = (
+            "code",
+            "name",
+        )  # To avoid duplicates.
 
     code = factory.Faker("currency_code")
     name = factory.Faker("currency_name")
@@ -27,6 +32,10 @@ class CurrencyFactory(factory.django.DjangoModelFactory):
 class MeasurementTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = MeasurementType
+        django_get_or_create = (
+            "code",
+            "name",
+        )  # To avoid duplicates.
 
     code = "KG"
     name = "Kilogram"
