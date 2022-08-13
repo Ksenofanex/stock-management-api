@@ -13,6 +13,27 @@ class MaterialViewSetTests(StockManagementAPITestCase):
         """Checks if Material list page is accessible to all."""
         self.get_check_200(url="v1:material-list")
 
+    def test_object_list(self):
+        """Checks if newly created and approved Material appears in list
+        page."""
+        material = MaterialFactory()
+
+        response = self.get(url_name="v1:material-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert material.name in relevant_response_data["name"]
+        assert material.sku in relevant_response_data["sku"]
+
+    def test_unapproved_object(self):
+        """Checks if unapproved Material is visible in list page."""
+        MaterialFactory(is_approved=False)
+
+        response = self.get(url_name="v1:material-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 0
+
     def test_detail_page(self):
         """Checks if Material detail page is accessible to all."""
         material = MaterialFactory()
@@ -57,13 +78,11 @@ class MaterialViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_201_created(response=response)
 
-        material = Material.objects.get(id=response.data.get("id"))
-        assert material.name == material_data.get("name")
-        assert material.total_amount == material_data.get("total_amount")
-        assert material.measurement_value == material_data.get(
-            "measurement_value"
-        )
-        assert material.price == material_data.get("price")
+        material = Material.objects.get(id=response.data["id"])
+        assert material.name == material_data["name"]
+        assert material.total_amount == material_data["total_amount"]
+        assert material.measurement_value == material_data["measurement_value"]
+        assert material.price == material_data["price"]
         assert material.accountant == test_user
 
     def test_unauthorized_user_can_change(self):
@@ -107,13 +126,11 @@ class MaterialViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_200_ok(response=response)
 
-        material = Material.objects.get(id=response.data.get("id"))
-        assert material.name == material_data.get("name")
-        assert material.total_amount == material_data.get("total_amount")
-        assert material.measurement_value == material_data.get(
-            "measurement_value"
-        )
-        assert material.price == material_data.get("price")
+        material = Material.objects.get(id=response.data["id"])
+        assert material.name == material_data["name"]
+        assert material.total_amount == material_data["total_amount"]
+        assert material.measurement_value == material_data["measurement_value"]
+        assert material.price == material_data["price"]
         assert material.accountant == authorized_user
 
     def test_unauthorized_user_can_delete(self):
@@ -142,11 +159,62 @@ class MaterialViewSetTests(StockManagementAPITestCase):
 
         assert Material.objects.count() == 0
 
+    def test_is_paginated(self):
+        """Checks if Material list page is paginated."""
+        currency = CurrencyFactory()
+        measurement_type = MeasurementTypeFactory()
+        for _ in range(15):
+            MaterialFactory(
+                currency=currency, measurement_type=measurement_type
+            )
+
+        response = self.get(url_name="v1:material-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 15
+        assert response.data["next"] is not None
+        assert response.data["previous"] is None
+
+    def test_filtering(self):
+        """Checks if filtering works properly in list page."""
+        material = MaterialFactory(name="test-filter")
+        MaterialFactory(name="must-not-appear")
+
+        response = self.get(
+            url_name="v1:material-list", data={"name": "filter"}
+        )
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert material.name in relevant_response_data["name"]
+        assert material.sku in relevant_response_data["sku"]
+
 
 class CurrencyViewSetTests(StockManagementAPITestCase):
     def test_list_page(self):
         """Checks if Currency list page is accessible to all."""
         self.get_check_200(url="v1:currency-list")
+
+    def test_object_list(self):
+        """Checks if newly created and approved Currency appears in list
+        page."""
+        currency = CurrencyFactory()
+
+        response = self.get(url_name="v1:currency-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert currency.code in relevant_response_data["code"]
+        assert currency.name in relevant_response_data["name"]
+
+    def test_unapproved_object(self):
+        """Checks if unapproved Currency is visible in list page."""
+        CurrencyFactory(is_approved=False)
+
+        response = self.get(url_name="v1:currency-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 0
 
     def test_detail_page(self):
         """Checks if Currency detail page is accessible to all."""
@@ -180,8 +248,8 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
             self.assert_http_201_created(response=response)
 
         currency = Currency.objects.get(id=response.data.get("id"))
-        assert currency.code == currency_data.get("code")
-        assert currency.name == currency_data.get("name")
+        assert currency.code == currency_data["code"]
+        assert currency.name == currency_data["name"]
 
     def test_authenticated_user_can_change(self):
         """Checks if any authenticated user is allowed to change Currency."""
@@ -211,11 +279,58 @@ class CurrencyViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_405_method_not_allowed(response=response)
 
+    def test_is_paginated(self):
+        """Checks if Currency list page is paginated."""
+        for i in range(15):
+            CurrencyFactory(code=f"code{i}", name=f"name{i}")
+
+        response = self.get(url_name="v1:currency-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 15
+        assert response.data["next"] is not None
+        assert response.data["previous"] is None
+
+    def test_filtering(self):
+        """Checks if filtering works properly in list page."""
+        currency = CurrencyFactory(name="test-filter")
+        CurrencyFactory(name="must-not-appear")
+
+        response = self.get(
+            url_name="v1:currency-list", data={"name": "filter"}
+        )
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert currency.code in relevant_response_data["code"]
+        assert currency.name in relevant_response_data["name"]
+
 
 class MeasurementTypeViewSetTests(StockManagementAPITestCase):
     def test_list_page(self):
         """Checks if Measurement Type list page is accessible to all."""
         self.get_check_200(url="v1:measurement-type-list")
+
+    def test_object_list(self):
+        """Checks if newly created and approved Measurement Type appears in
+        list page."""
+        measurement_type = MeasurementTypeFactory()
+
+        response = self.get(url_name="v1:measurement-type-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert measurement_type.code in relevant_response_data["code"]
+        assert measurement_type.name in relevant_response_data["name"]
+
+    def test_unapproved_object(self):
+        """Checks if unapproved Measurement Type is visible in list page."""
+        MeasurementTypeFactory(is_approved=False)
+
+        response = self.get(url_name="v1:measurement-type-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 0
 
     def test_detail_page(self):
         """Checks if Measurement Type detail page is accessible to all."""
@@ -257,8 +372,8 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
         measurement_type = MeasurementType.objects.get(
             id=response.data.get("id")
         )
-        assert measurement_type.code == measurement_type_data.get("code")
-        assert measurement_type.name == measurement_type_data.get("name")
+        assert measurement_type.code == measurement_type_data["code"]
+        assert measurement_type.name == measurement_type_data["name"]
 
     def test_authenticated_user_can_change(self):
         """Checks if any authenticated user is allowed to change
@@ -290,11 +405,62 @@ class MeasurementTypeViewSetTests(StockManagementAPITestCase):
             )
             self.assert_http_405_method_not_allowed(response=response)
 
+    def test_is_paginated(self):
+        """Checks if Measurement Type list page is paginated."""
+        for i in range(15):
+            MeasurementTypeFactory(code=f"code{i}", name=f"name{i}")
+
+        response = self.get(url_name="v1:measurement-type-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 15
+        assert response.data["next"] is not None
+        assert response.data["previous"] is None
+
+    def test_filtering(self):
+        """Checks if filtering works properly in list page."""
+        measurement_type = MeasurementTypeFactory(
+            code="test-filter", name="test-filter"
+        )
+        MeasurementTypeFactory(code="must-not-appear", name="must-not-appear")
+
+        response = self.get(
+            url_name="v1:measurement-type-list", data={"name": "filter"}
+        )
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert measurement_type.code in relevant_response_data["code"]
+        assert measurement_type.name in relevant_response_data["name"]
+
 
 class SupplierViewSetTests(StockManagementAPITestCase):
     def test_list_page(self):
         """Checks if Supplier list page is accessible to all."""
         self.get_check_200(url="v1:supplier-list")
+
+    def test_object_list(self):
+        """Checks if newly created and approved Supplier appears in list
+        page."""
+        supplier = SupplierFactory()
+
+        response = self.get(url_name="v1:supplier-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert supplier.name in relevant_response_data["name"]
+        assert str(supplier.phone) in relevant_response_data["phone"]
+        assert supplier.email in relevant_response_data["email"]
+        assert supplier.address in relevant_response_data["address"]
+
+    def test_unapproved_object(self):
+        """Checks if unapproved Supplier is visible in list page."""
+        SupplierFactory(is_approved=False)
+
+        response = self.get(url_name="v1:measurement-type-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 0
 
     def test_detail_page(self):
         """Checks if Supplier detail page is accessible to all."""
@@ -332,10 +498,10 @@ class SupplierViewSetTests(StockManagementAPITestCase):
             self.assert_http_201_created(response=response)
 
         supplier = Supplier.objects.get(id=response.data.get("id"))
-        assert supplier.name == supplier_data.get("name")
-        assert supplier.phone == supplier_data.get("phone")
-        assert supplier.email == supplier_data.get("email")
-        assert supplier.address == supplier_data.get("address")
+        assert supplier.name == supplier_data["name"]
+        assert supplier.phone == supplier_data["phone"]
+        assert supplier.email == supplier_data["email"]
+        assert supplier.address == supplier_data["address"]
 
     def test_authenticated_user_can_change(self):
         """Checks if any authenticated user is allowed to change Supplier."""
@@ -366,3 +532,31 @@ class SupplierViewSetTests(StockManagementAPITestCase):
                 url_name="v1:supplier-detail", pk=supplier.id
             )
             self.assert_http_405_method_not_allowed(response=response)
+
+    def test_is_paginated(self):
+        """Checks if Supplier list page is paginated."""
+        SupplierFactory.create_batch(15)  # Creates specific number of
+        # Suppliers.
+
+        response = self.get(url_name="v1:supplier-list")
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 15
+        assert response.data["next"] is not None
+        assert response.data["previous"] is None
+
+    def test_filtering(self):
+        """Checks if filtering works properly in list page."""
+        supplier = SupplierFactory(name="test-filter")
+        SupplierFactory(name="must-not-appear")
+
+        response = self.get(
+            url_name="v1:supplier-list", data={"name": "filter"}
+        )
+        self.assert_http_200_ok(response=response)
+        assert response.data["count"] == 1
+
+        relevant_response_data = response.data["results"][0]
+        assert supplier.name in relevant_response_data["name"]
+        assert str(supplier.phone) in relevant_response_data["phone"]
+        assert supplier.email in relevant_response_data["email"]
+        assert supplier.address in relevant_response_data["address"]
