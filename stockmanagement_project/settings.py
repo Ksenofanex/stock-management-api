@@ -160,6 +160,10 @@ REST_FRAMEWORK = {
         # of root url. v1, v2 etc.
         "rest_framework.versioning.NamespaceVersioning"
     ),
+    "DEFAULT_PAGINATION_CLASS": (
+        "rest_framework.pagination.LimitOffsetPagination"
+    ),
+    "PAGE_SIZE": 10,
 }
 
 EMAIL_BACKEND = (  # For pass reset e-mail and account confirmation.
