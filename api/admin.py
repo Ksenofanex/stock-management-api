@@ -46,6 +46,10 @@ class MaterialAdmin(admin.ModelAdmin):
             },
         ),
         (
+            "Approval",
+            {"fields": ("is_approved",)},
+        ),
+        (
             "Relations",
             {
                 "fields": (
@@ -53,15 +57,6 @@ class MaterialAdmin(admin.ModelAdmin):
                     "currency",
                     "measurement_type",
                     "supplier",
-                )
-            },
-        ),
-        (
-            "Date",
-            {
-                "fields": (
-                    "created_date",
-                    "updated_date",
                 )
             },
         ),
@@ -87,6 +82,22 @@ class CurrencyAdmin(admin.ModelAdmin):
         "code",
     )
 
+    fieldsets = (
+        (
+            "Main",
+            {
+                "fields": (
+                    "code",
+                    "name",
+                )
+            },
+        ),
+        (
+            "Approval",
+            {"fields": ("is_approved",)},
+        ),
+    )
+
 
 @admin.register(MeasurementType)
 class MeasurementTypeAdmin(admin.ModelAdmin):
@@ -105,6 +116,22 @@ class MeasurementTypeAdmin(admin.ModelAdmin):
     list_filter = (
         "name",
         "code",
+    )
+
+    fieldsets = (
+        (
+            "Main",
+            {
+                "fields": (
+                    "code",
+                    "name",
+                )
+            },
+        ),
+        (
+            "Approval",
+            {"fields": ("is_approved",)},
+        ),
     )
 
 
@@ -128,6 +155,24 @@ class SupplierAdmin(admin.ModelAdmin):
         "name",
         "phone",
         "email",
+    )
+
+    fieldsets = (
+        (
+            "Main",
+            {
+                "fields": (
+                    "name",
+                    "phone",
+                    "email",
+                    "address",
+                )
+            },
+        ),
+        (
+            "Approval",
+            {"fields": ("is_approved",)},
+        ),
     )
 
 
@@ -159,7 +204,7 @@ class CustomUserAdmin(UserAdmin):
         (
             "Permissions",
             {
-                "fields": ("is_staff", "is_superuser"),
+                "fields": ("is_active", "is_staff", "is_superuser"),
             },
         ),
     )
