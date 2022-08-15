@@ -176,8 +176,9 @@ class MaterialViewSetTests(StockManagementAPITestCase):
 
     def test_filtering(self):
         """Checks if filtering works properly in list page."""
-        material = MaterialFactory(name="test-filter")
-        MaterialFactory(name="must-not-appear")
+        currency = CurrencyFactory(code="TST", name="Test Currency")
+        material = MaterialFactory(name="test-filter", currency=currency)
+        MaterialFactory(name="must-not-appear", currency=currency)
 
         response = self.get(
             url_name="v1:material-list", data={"name": "filter"}
