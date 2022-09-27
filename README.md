@@ -10,27 +10,27 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 ## Registration & Authentication
 
-- [API Registration](https://stockmanagementksenofanex.herokuapp.com/api/v1/rest-auth/registration/) 
+- [API Registration](https://stockmanagementksenofanex.fly.dev/api/v1/rest-auth/registration/) 
 
-- [API Login](https://stockmanagementksenofanex.herokuapp.com/api-auth/login/?next=/api/) 
+- [API Login](https://stockmanagementksenofanex.fly.dev/api-auth/login/?next=/api/) 
 
 
 ## Pages
 
 
-- [API Root](https://stockmanagementksenofanex.herokuapp.com/api/)
+- [API Root](https://stockmanagementksenofanex.fly.dev/api/)
 
-- [Materials](https://stockmanagementksenofanex.herokuapp.com/api/materials/)
+- [Materials](https://stockmanagementksenofanex.fly.dev/api/materials/)
 
-- [Suppliers](https://stockmanagementksenofanex.herokuapp.com/api/suppliers/)
+- [Suppliers](https://stockmanagementksenofanex.fly.dev/api/suppliers/)
 
-- [Currencies](https://stockmanagementksenofanex.herokuapp.com/api/currencies/)
+- [Currencies](https://stockmanagementksenofanex.fly.dev/api/currencies/)
 
-- [Measurement Types](https://stockmanagementksenofanex.herokuapp.com/api/measurement-types/) 
+- [Measurement Types](https://stockmanagementksenofanex.fly.dev/api/measurement-types/) 
 
 ## Documentation
 
-- [Swagger Documents](https://stockmanagementksenofanex.herokuapp.com/swagger-docs/)
+- [Swagger Documents](https://stockmanagementksenofanex.fly.dev/swagger-docs/)
 
 # Installation
 
