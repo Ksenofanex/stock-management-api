@@ -12,7 +12,7 @@ A simple Stock Management API that was built with Django Rest Framework. It has 
 
 - [API Registration](https://stockmanagementksenofanex.fly.dev/api/v1/rest-auth/registration/) 
 
-- [API Login](https://stockmanagementksenofanex.fly.dev/api-auth/login/?next=/api/) 
+- [API Log in](https://stockmanagementksenofanex.fly.dev/api-auth/login/?next=/api/) 
 
 
 ## Pages
