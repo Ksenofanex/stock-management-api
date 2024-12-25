@@ -1,4 +1,4 @@
-# stock-management-api
+# Stock Management API
 
 **Although you can view this project on the site, it's no longer active or maintained. Still, you can open an issue or a PR if you find a critical bug, I'll fix it ASAP.**
 
