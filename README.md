@@ -1,36 +1,13 @@
 # Stock Management API
 
-**Although you can view this project on the site, it's no longer active or maintained. Still, you can open an issue or a PR if you find a critical bug, I'll fix it ASAP.**
+**Warning! This project is no longer maintained.**
 
 ***
 
 A simple Stock Management API that was built with Django Rest Framework. It has CRUD, schema, documents, API authentication and authorization features. It was my very first project and I developed it while learning Django, Django Rest Framework and back end development in general.
 
-# Live showcase
-
-## Registration & Authentication
-
-- [API Registration](https://stockmanagementksenofanex.fly.dev/api/v1/rest-auth/registration/) 
-
-- [API Log in](https://stockmanagementksenofanex.fly.dev/api-auth/login/?next=/api/) 
-
-
-## Pages
-
-
-- [API Root](https://stockmanagementksenofanex.fly.dev/api/)
-
-- [Materials](https://stockmanagementksenofanex.fly.dev/api/materials/)
-
-- [Suppliers](https://stockmanagementksenofanex.fly.dev/api/suppliers/)
-
-- [Currencies](https://stockmanagementksenofanex.fly.dev/api/currencies/)
-
-- [Measurement Types](https://stockmanagementksenofanex.fly.dev/api/measurement-types/) 
-
-## Documentation
-
-- [Swagger Documents](https://stockmanagementksenofanex.fly.dev/swagger-docs/)
+![Stock Management API](/images/api-main-endpoint.png)
+![Materials Page](/images/api-materials-endpoint.png)
 
 # Installation
 
