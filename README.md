@@ -1,6 +1,7 @@
 # Stock Management API
 
-**Warning! This project is no longer maintained.**
+> [!CAUTION]
+> This project is no longer maintained.
 
 ***
 
